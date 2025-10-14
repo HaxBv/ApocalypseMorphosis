@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
     public Vector2 moveInput;
     public float MoveSpeed;
 
-    private void Awake()
+    /*private void Awake()
     {
         input = new();
     }
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-    }
+    }*/
     void Start()
     {
         
@@ -81,14 +81,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        MovementMechanic();
-        Pasive();
+       // MovementMechanic();
+        //Pasive();
         Ability1();
         Ability2();
         Definitiva();
         OutOfControl();
     }
-    public void MovementMechanic()
+    /*public void MovementMechanic()
 
     {
         transform.position += (Vector3)moveInput * MoveSpeed * Time.deltaTime;
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
             HPactual = Mathf.Min(HPMax, HPactual + regenerationHp);
 
         }
-    }
+    }*/
     public void Ability1()
     {
 
