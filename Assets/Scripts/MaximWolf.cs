@@ -4,16 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
-public class MaximWolf : MonoBehaviour, IDamagable, IAtacar
+public class MaximWolf : Player, IDamagable, IAtacar
 {
-    public InputSystem_Actions input;
-
-    public int Level = 1;
-    public int LevelMax = 8;
-
-    public int ExpActual;
-    public int ExpMax;
-    public int ExpToLevelUp;
 
     public GameObject cuadradoPrefab;
     public float RangeLeftClick = 2f;
@@ -23,31 +15,8 @@ public class MaximWolf : MonoBehaviour, IDamagable, IAtacar
     public int RageMax = 100;
     public int RageGained = 2;
 
-    public int HPMax;
-    public int HPMin = 0;
-    public int HPactual;
 
-    public int AtkMax;
-    public int AtkMin = 0;
-    public int Atkactual;
-
-    public int EnergyMax;
-    public int EnergyMin = 0;
-    public int Energyactual;
-
-    public int RegenerationEnergy;
-    public int RegenerationHP;
-    public int RegenerationControlHP;
-
-    public int ControlMax;
-    public int ControlActual;
-    public int ControlMin;
-
-    public float Cooldown;
-    public Vector2 moveInput;
-    public float MoveSpeed;
-
-    private void Awake()
+    /*private void Awake()
     {
         input = new();
     }
@@ -71,7 +40,7 @@ public class MaximWolf : MonoBehaviour, IDamagable, IAtacar
     private void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-    }
+    }*/
     void Start()
     {
         
@@ -87,12 +56,12 @@ public class MaximWolf : MonoBehaviour, IDamagable, IAtacar
         Definitiva();
         OutOfControl();
     }
-    public void MovementMechanic()
+    /*public void MovementMechanic()
 
     {
         transform.position += (Vector3)moveInput * MoveSpeed * Time.deltaTime;
     }
-
+    */
     public void Pasive()
     {
         RageActual += RageGained;

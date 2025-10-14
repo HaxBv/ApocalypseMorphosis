@@ -13,7 +13,7 @@ public enum ActiveForm
     Draco,
     Trueno,
 }
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     public InputSystem_Actions input;
 
@@ -21,16 +21,10 @@ public class Player : MonoBehaviour
     public int LevelMax = 8;
 
     public int ExpActual;
-    public int ExpActualMax;
+    public int ExpMax;
     public int ExpToLevelUp;
 
-    public int HPMax;
-    public int HPMin = 0;
-    public int HPactual;
 
-    public int AtkMax;
-    public int AtkMin = 0;
-    public int Atkactual;
 
     public int EnergyMax;
     public int EnergyMin = 0;
@@ -46,9 +40,9 @@ public class Player : MonoBehaviour
 
     public float Cooldown;
     public Vector2 moveInput;
-    public float MoveSpeed;
+   
 
-    /*private void Awake()
+    private void Awake()
     {
         input = new();
     }
@@ -72,7 +66,7 @@ public class Player : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-    }*/
+    }
     void Start()
     {
         
@@ -81,14 +75,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-       // MovementMechanic();
-        //Pasive();
-        Ability1();
-        Ability2();
-        Definitiva();
-        OutOfControl();
+       MovementMechanic();
+       
+        
     }
-    /*public void MovementMechanic()
+    public void MovementMechanic()
 
     {
         transform.position += (Vector3)moveInput * MoveSpeed * Time.deltaTime;
@@ -102,21 +93,6 @@ public class Player : MonoBehaviour
             HPactual = Mathf.Min(HPMax, HPactual + regenerationHp);
 
         }
-    }*/
-    public void Ability1()
-    {
-
     }
-    public void Ability2()
-    {
-
-    }
-    public void Definitiva()
-    {
-
-    }
-    public void OutOfControl()
-    {
-
-    }
+    
 }
