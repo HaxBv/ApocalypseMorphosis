@@ -13,3 +13,12 @@ public interface IAtacar
 {
     void Atacar(GameObject Target);
 }
+
+public interface IAllAbilities
+{
+    void Pasive();
+    void Ability1();
+    void Ability2();
+    void Definitiva();
+    void OutOfControl();
+}
