@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
-public class MaximWolf : Player, IDamagable, IAtacar
+public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 {
 
     public GameObject cuadradoPrefab;
@@ -16,31 +16,6 @@ public class MaximWolf : Player, IDamagable, IAtacar
     public int RageGained = 2;
 
 
-    /*private void Awake()
-    {
-        input = new();
-    }
-    private void OnEnable()
-    {
-        input.Enable();
-
-        input.Player.Move.performed += OnMove;
-        input.Player.Move.canceled += OnMove;
-        input.Player.Move.started += OnMove;
-    }
-    private void OnDisable()
-    {
-        input.Enable();
-
-        input.Player.Move.performed -= OnMove;
-        input.Player.Move.canceled -= OnMove;
-        input.Player.Move.started -= OnMove;
-    }
-
-    private void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }*/
     void Start()
     {
         
@@ -50,23 +25,18 @@ public class MaximWolf : Player, IDamagable, IAtacar
     void Update()
     {
         MovementMechanic();
-        Pasive();
+        Passive();
         Ability1();
-        Ability2();
+        /*Ability2();
         Definitiva();
-        OutOfControl();
+        OutOfControl();*/
+        MouseDirection();
     }
-    /*public void MovementMechanic()
-
-    {
-        transform.position += (Vector3)moveInput * MoveSpeed * Time.deltaTime;
-    }
-    */
-    public void Pasive()
+    
+    public void Passive()
     {
         RageActual += RageGained;
         RageActual = Mathf.Min(RageMax, RageActual + RageGained);
-
     }
     public void Ability1()
     {
@@ -78,29 +48,41 @@ public class MaximWolf : Player, IDamagable, IAtacar
 
             Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
 
-
         }
     
     }
+    
     public void Ability2()
     {
-
+        Debug.Log("Aullido");
     }
+
     public void Definitiva()
     {
-
+        Debug.Log("Bestia Liberada");
     }
+
     public void OutOfControl()
     {
-
+        Debug.Log("Perdiste el control");
     }
+
+
+
+    public void MouseDirection()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Debug.Log("Posición del mouse en pantalla: " + mousePos);
+    }
+
+
     public void TakeDamage(int damage)
     {
         HPactual -= damage;
 
-        if (HPactual > 0) 
+        if (HPactual > 0)
         {
-            Pasive();
+            Passive();
         }
 
     }
@@ -113,10 +95,11 @@ public class MaximWolf : Player, IDamagable, IAtacar
             receptor.TakeDamage(Atkactual);
             if (HPactual > 0)
             {
-                Pasive();
+                Passive();
             }
         }
 
-       
+
     }
+
 }

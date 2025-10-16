@@ -16,9 +16,10 @@ public interface IAtacar
 
 public interface IAllAbilities
 {
-    void Pasive();
+    void Passive();
     void Ability1();
     void Ability2();
     void Definitiva();
     void OutOfControl();
 }
+
