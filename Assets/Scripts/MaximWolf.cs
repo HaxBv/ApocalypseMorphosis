@@ -15,6 +15,8 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
     public int RageMax = 100;
     public int RageGained = 2;
 
+   // public Vector2 moveInput;
+    public Animator animator;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
         Definitiva();
         OutOfControl();*/
         MouseDirection();
+        Animation();
     }
     
     public void Passive()
@@ -47,6 +50,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
             Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
 
             Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
+            Destroy(cuadradoPrefab,1);
 
         }
     
@@ -100,6 +104,29 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
         }
 
 
+    }
+    public void Animation()
+    {
+        float velocidadX = moveInput.x;
+        float velocidadY = moveInput.y;
+        float velocidadTotal = moveInput.magnitude;
+        if (animator != null)
+        {
+            animator.SetFloat("Movement", velocidadTotal);
+            print(moveInput);
+
+        }
+
+
+        if (velocidadX != 0)
+            FlipSprite(Mathf.Sign(velocidadX));
+    }
+
+    private void FlipSprite(float direccionX)
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * direccionX;
+        transform.localScale = scale;
     }
 
 }
