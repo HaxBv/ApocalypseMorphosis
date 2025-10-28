@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1714525334350936676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 2.63, z: 0}
-  m_LocalScale: {x: 1.94, y: 1.94, z: 1.94}
+  m_LocalPosition: {x: -18.2908, y: -18.545, z: 0}
+  m_LocalScale: {x: 0.15352781, y: 0.15352781, z: 0.15352781}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -190321944691808813, guid: ac2f8f6773f19c941be6d3e6523f6535, type: 3}
+  m_Sprite: {fileID: 7871533087965977000, guid: bd77b31e15d57de4c8bb3e8d150c6bee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,10 +148,8 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   cuadradoPrefab: {fileID: 7736930075223745082, guid: 6c59ca0eba0ab804997f6966e68caec0, type: 3}
   circuloPrefab: {fileID: 8595332212404942488, guid: dfa9d249fffc4074eb95bb72df4b6ef2, type: 3}
-  RangeLeftClick: 2
-  RangeQ: 10
+  RangeLeftClick: 3.5
   RageActual: 0
   RageMax: 100
   RageGained: 2
-  animator: {fileID: 6880787344346259546}
   player: {fileID: 129925144375400192}

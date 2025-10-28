@@ -9,7 +9,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 
     public GameObject cuadradoPrefab;
     public GameObject circuloPrefab;
-    public float RangeLeftClick = 2f;
+    public float RangeLeftClick = 4f;
    
 
     public int RageActual;
@@ -17,7 +17,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
     public int RageGained = 2;
 
    
-    public Animator animator;
+   
     public Transform player;
 
     void Start()
@@ -36,7 +36,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
         Definitiva();
         
         
-        Animation();
+        
     }
     
     public void Passive()
@@ -122,28 +122,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 
 
     }
-    public void Animation()
-    {
-        float velocidadX = moveInput.x;
-        float velocidadY = moveInput.y;
-        float velocidadTotal = moveInput.magnitude;
-        if (animator != null)
-        {
-            animator.SetFloat("Movement", velocidadTotal);
-            
+    
 
-        }
-
-
-        if (velocidadX != 0)
-            FlipSprite(Mathf.Sign(velocidadX));
-    }
-
-    private void FlipSprite(float direccionX)
-    {
-        Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * direccionX;
-        transform.localScale = scale;
-    }
-
+    
 }
