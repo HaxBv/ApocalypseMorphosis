@@ -8,15 +8,17 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 {
 
     public GameObject cuadradoPrefab;
+    public GameObject circuloPrefab;
     public float RangeLeftClick = 2f;
-    public float RangeQ = 10f;
+   
 
     public int RageActual;
     public int RageMax = 100;
     public int RageGained = 2;
 
-   // public Vector2 moveInput;
+   
     public Animator animator;
+    public Transform player;
 
     void Start()
     {
@@ -29,10 +31,11 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
         MovementMechanic();
         Passive();
         Ability1();
-        /*Ability2();
+        Ability2();
+       
         Definitiva();
-        OutOfControl();*/
-        MouseDirection();
+        
+        
         Animation();
     }
     
@@ -50,7 +53,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
             Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
 
             Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
-            Destroy(cuadradoPrefab,1);
+            
 
         }
     
@@ -58,12 +61,30 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
     
     public void Ability2()
     {
-        Debug.Log("Aullido");
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+
+            if (player != null)
+            {
+                Instantiate(circuloPrefab, player.position, Quaternion.identity);
+                Debug.Log("Aullido Aterrador");
+            }
+            else
+            {
+                Debug.LogWarning("No se asignó el jugador en el Inspector.");
+            }
+        }
+
     }
 
     public void Definitiva()
     {
-        Debug.Log("Bestia Liberada");
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Bestia Liberada");
+
+        }
+        
     }
 
     public void OutOfControl()
@@ -73,11 +94,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 
 
 
-    public void MouseDirection()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        Debug.Log("Posición del mouse en pantalla: " + mousePos);
-    }
+    
 
 
     public void TakeDamage(int damage)
@@ -113,7 +130,7 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
         if (animator != null)
         {
             animator.SetFloat("Movement", velocidadTotal);
-            print(moveInput);
+            
 
         }
 
