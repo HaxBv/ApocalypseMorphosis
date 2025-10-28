@@ -63,7 +63,7 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
 
             transform.position = worldPos;
 
-            Debug.Log("Teletrasnfortasion");
+            Debug.Log("Teletransportación");
         }
 
     }
