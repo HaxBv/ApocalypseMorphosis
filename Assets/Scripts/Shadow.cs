@@ -7,6 +7,7 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
     public GameObject RafagaPrefab;
 
     public float RangeDagas = 2f;
+    public float SpeedRafaga = 0.4f;
     public Animator animator;
     public Transform player;
     void Start()
@@ -85,14 +86,14 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
     }
     private IEnumerator SpawnRafaga()
     {
-        // Rotaciones para formar el asterisco
+        
         float[] rotaciones = { 0f, 45f, 90f, 135f };
 
         foreach (float rot in rotaciones)
         {
             Quaternion rotacion = Quaternion.Euler(0f, 0f, rot);
             Instantiate(RafagaPrefab, player.position, rotacion);
-            yield return new WaitForSeconds(0.5f); // Tiempo de espera
+            yield return new WaitForSeconds(SpeedRafaga);
         }
     }
 

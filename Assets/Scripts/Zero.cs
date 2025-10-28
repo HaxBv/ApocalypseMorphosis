@@ -4,6 +4,7 @@ public class Zero : Player, IDamagable, IAtacar, IAllAbilities
 {
     public GameObject circuloPrefab;
     public GameObject RayoLazerPrefab;
+    public float RangeLazer = 2f;
     public Transform player;
     void Start()
     {
@@ -56,14 +57,16 @@ public class Zero : Player, IDamagable, IAtacar, IAllAbilities
                 mousePos.z = 0f;
 
                 // Calcular la dirección del mouse desde el jugador
-                Vector3 direccion = mousePos - player.position;
+                float dirFrontal = Mathf.Sign(transform.localScale.x);
+                Vector3 posicionFrente = transform.position + new Vector3(RangeLazer * dirFrontal, 0, 0);
+                Vector3 direccion = mousePos - posicionFrente;
 
                 // Calcular el ángulo en grados
                 float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
 
                 // Crear el rectángulo rotado hacia el mouse
                 Quaternion rotacion = Quaternion.Euler(0f, 0f, angulo);
-                GameObject rayo = Instantiate(RayoLazerPrefab, player.position, rotacion);
+                GameObject rayo = Instantiate(RayoLazerPrefab, posicionFrente, rotacion);
 
                 //Hacer que el rayo siga al jugador
                 rayo.transform.SetParent(player);
