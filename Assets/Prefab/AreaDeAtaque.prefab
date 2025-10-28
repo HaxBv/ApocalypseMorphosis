@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 649487781495919964}
   - component: {fileID: 3397798560202706169}
+  - component: {fileID: 199826837709108693}
   m_Layer: 0
   m_Name: AreaDeAtaque
   m_TagString: Untagged
@@ -87,3 +88,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &199826837709108693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694464459483174546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867676be1ff85be45b320858c6df98f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 3
