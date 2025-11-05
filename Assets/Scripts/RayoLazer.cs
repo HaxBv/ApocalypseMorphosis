@@ -6,10 +6,10 @@ public class RayoLazer : MonoBehaviour
     
 
     private bool isRotating;          // Controla si el láser gira o no
-
+    public float lifetime;
     void Start()
     {
-
+        Destroy(gameObject,lifetime);
     }
 
     

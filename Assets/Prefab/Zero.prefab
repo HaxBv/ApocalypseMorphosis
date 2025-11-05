@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2826493407183913623, guid: d954b82ec7d477240917a500e0574558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,27 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62317e18edcfafd41943a86f06c97937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPMax: 0
-  HPMin: 0
-  HPactual: 0
-  AtkMax: 0
-  AtkMin: 0
-  Atkactual: 0
-  MoveSpeed: 5
+  HpActual: 0
+  AtkActual: 0
+  MoveSpeed: 3
   Level: 1
-  LevelMax: 8
   ExpActual: 0
-  ExpMax: 0
-  ExpToLevelUp: 0
-  EnergyMax: 0
-  EnergyMin: 0
   Energyactual: 0
-  RegenerationEnergy: 0
-  RegenerationHP: 0
-  RegenerationControlHP: 0
-  ControlMax: 0
   ControlActual: 0
-  ControlMin: 0
   Cooldown: 0
   moveInput: {x: 0, y: 0}
   circuloPrefab: {fileID: 3694464459483174546, guid: 4ee29a984c91ea344b140cf6a91f8004, type: 3}

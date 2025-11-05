@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4093480436322176185, guid: 85817b06e9b713f47922d42c32c3d39e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,30 +100,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61671ec8c3fbbf5449c6fb2e66b93dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPMax: 0
-  HPMin: 0
-  HPactual: 0
-  AtkMax: 0
-  AtkMin: 0
-  Atkactual: 0
-  MoveSpeed: 5
+  HpActual: 0
+  AtkActual: 0
+  MoveSpeed: 4
   Level: 1
-  LevelMax: 8
   ExpActual: 0
-  ExpMax: 0
-  ExpToLevelUp: 0
-  EnergyMax: 0
-  EnergyMin: 0
   Energyactual: 0
-  RegenerationEnergy: 0
-  RegenerationHP: 0
-  RegenerationControlHP: 0
-  ControlMax: 0
   ControlActual: 0
-  ControlMin: 0
   Cooldown: 0
   moveInput: {x: 0, y: 0}
   DagasPrefab: {fileID: 1873457528791605043, guid: 17f58dde589d8664cbaf24fa9b90e5f9, type: 3}
+  SlashPrefab: {fileID: 2283985827471823607, guid: eca24dd8400084545aa23fd3029d3463, type: 3}
   RafagaPrefab: {fileID: 5027220801585524925, guid: da94a3e47eaf36c4a8e614ca3897e050, type: 3}
   RangeDagas: 2
   SpeedRafaga: 0.2

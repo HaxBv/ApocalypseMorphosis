@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
-public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
+public class MaximWolf : Player, IDamagable, IAtacar
 {
 
     public GameObject cuadradoPrefab;
@@ -28,26 +28,21 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
     
     void Update()
     {
+
+
         MovementMechanic();
-        Passive();
-        Ability1();
-        Ability2();
-       
-        Definitiva();
-        
-        
-        
+
+
     }
-    
-    public void Passive()
+
+    public override void Passive()
     {
         RageActual += RageGained;
         RageActual = Mathf.Min(RageMax, RageActual + RageGained);
     }
-    public void Ability1()
+    public override void Ability1()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
+       
            
             float direccion = Mathf.Sign(transform.localScale.x);
             Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
@@ -55,39 +50,38 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
             Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
             
 
-        }
     
     }
     
-    public void Ability2()
+    public override void Ability2()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+  
+        if (player != null)
         {
-
-            if (player != null)
-            {
-                Instantiate(circuloPrefab, player.position, Quaternion.identity);
-                Debug.Log("Aullido Aterrador");
-            }
-            else
-            {
-                Debug.LogWarning("No se asignó el jugador en el Inspector.");
-            }
+            Instantiate(circuloPrefab, player.position, Quaternion.identity);
+            Debug.Log("Aullido Aterrador");
         }
+            
+        else
+        {
+               
+            Debug.LogWarning("No se asignó el jugador en el Inspector.");
+            
+        }
+        
 
     }
 
-    public void Definitiva()
+    public override void Definitiva()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
+        
             Debug.Log("Bestia Liberada");
 
-        }
+        
         
     }
 
-    public void OutOfControl()
+    public override void OutOfControl()
     {
         Debug.Log("Perdiste el control");
     }
@@ -99,9 +93,9 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 
     public void TakeDamage(int damage)
     {
-        HPactual -= damage;
+        HpActual -= damage;
 
-        if (HPactual > 0)
+        if (HpActual > 0)
         {
             Passive();
         }
@@ -113,8 +107,8 @@ public class MaximWolf : Player, IDamagable, IAtacar, IAllAbilities
 
         if (receptor != null)
         {
-            receptor.TakeDamage(Atkactual);
-            if (HPactual > 0)
+            receptor.TakeDamage(AtkActual);
+            if (HpActual > 0)
             {
                 Passive();
             }

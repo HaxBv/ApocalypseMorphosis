@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
+public class Shadow : Player, IDamagable, IAtacar
 {
     public GameObject DagasPrefab;
+    public GameObject SlashPrefab;
     public GameObject RafagaPrefab;
+
 
     public float RangeDagas = 2f;
     public float SpeedRafaga = 0.4f;
@@ -19,19 +21,16 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
     void Update()
     {
         MovementMechanic();
-        Ability1();
-        Ability2();
-        Definitiva();
+
+
     }
-    public void Passive()
+    public override void Passive()
     {
         throw new System.NotImplementedException();
     }
-    public void Ability1()
+    public override void Ability1()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            float direccion = Mathf.Sign(transform.localScale.x);
+         float direccion = Mathf.Sign(transform.localScale.x);
             Vector3 posicionFrente = transform.position + new Vector3(RangeDagas * direccion, 0, 0);
 
             // Dirección base (frente)
@@ -43,14 +42,13 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
             CrearDaga(posicionFrente, dirFrente);
             CrearDaga(posicionFrente, dirArriba);
             CrearDaga(posicionFrente, dirAbajo);
-        }
+        
 
     }
 
-    public void Ability2()
+    public override void Ability2()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
+        
 
             Vector3 mousePos = Input.mousePosition;
 
@@ -63,32 +61,42 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
 
             transform.position = worldPos;
 
+        if (player != null)
+        {
             Debug.Log("Teletransportación");
+            Instantiate(SlashPrefab, player.position, Quaternion.identity);
+        }
+        else
+        {
+
+            Debug.LogWarning("No se asignó el jugador en el Inspector.");
+
         }
 
     }
 
-    public void Definitiva()
+    public  override void Definitiva()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (player != null)
-            {
-                Debug.Log("1000 Sombras");
-                StartCoroutine(SpawnRafaga());
-            }
-            else
-            {
-                Debug.LogWarning("No se asignó el jugador en el Inspector.");
-            }
+        
+        if (player != null)
+            
+        {   
+            Debug.Log("1000 Sombras");
+            StartCoroutine(SpawnRafaga()); 
         }
+           
+        else
+           
+        {
+            Debug.LogWarning("No se asignó el jugador en el Inspector.");
+        }
+        
 
     }
     private IEnumerator SpawnRafaga()
     {
         
         float[] rotaciones = { 0f, 45f, 90f, 135f };
-
         foreach (float rot in rotaciones)
         {
             Quaternion rotacion = Quaternion.Euler(0f, 0f, rot);
@@ -97,7 +105,7 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
         }
     }
 
-    public void OutOfControl()
+    public override void OutOfControl()
     {
         Debug.Log("Perdiste el control");
     }
@@ -122,25 +130,10 @@ public class Shadow : Player, IDamagable, IAtacar, IAllAbilities
 
     }
 
-    public void Atacar(GameObject target)
+    public void Atacar(GameObject Target)
     {
-        IDamagable receptor = target.GetComponent<IDamagable>();
-
-        if (receptor != null)
-        {
-            receptor.TakeDamage(Atkactual);
-            if (HPactual > 0)
-            {
-                Passive();
-            }
-        }
-
-
+        throw new System.NotImplementedException();
     }
-    
-
-
-
 }
 
 

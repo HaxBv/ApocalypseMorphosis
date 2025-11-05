@@ -6,13 +6,13 @@ public class Entity:MonoBehaviour
 {
    
 
-    public int HPMax;
-    public int HPMin = 0;
-    public int HPactual;
+    private int HpMax;
+    private int HpMin;
+    public int HpActual;
 
-    public int AtkMax;
-    public int AtkMin = 0;
-    public int Atkactual;
+    private int AtkMax;
+    private int AtkMin;
+    public int AtkActual;
 
     public float MoveSpeed;
    

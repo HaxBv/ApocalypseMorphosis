@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Rafaga : MonoBehaviour
+public class Slash : MonoBehaviour
 {
-    public GameObject DagasPrefab;
     public float lifetime;
     void Start()
     {

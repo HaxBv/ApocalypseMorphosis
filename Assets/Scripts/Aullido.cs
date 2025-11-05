@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Aullido : MonoBehaviour
 {
-    public float lifetime = 1f;
+    public float lifetime;
     void Start()
     {
         Destroy(gameObject, lifetime);

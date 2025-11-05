@@ -1,11 +1,14 @@
+using System;
 using UnityEngine;
 
-public class Zero : Player, IDamagable, IAtacar, IAllAbilities
+public class Zero : Player, IDamagable, IAtacar
 {
     public GameObject circuloPrefab;
     public GameObject RayoLazerPrefab;
     public float RangeLazer = 2f;
     public Transform player;
+
+    
     void Start()
     {
         
@@ -14,14 +17,13 @@ public class Zero : Player, IDamagable, IAtacar, IAllAbilities
     void Update()
     {
         MovementMechanic();
-        Ability1();
-        Ability2();
-        Definitiva();
+
+
     }
-    public void Ability1()
+    public override void Ability1()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
+        base.Ability1();
+        
 
             Vector3 mousePos = Input.mousePosition;
 
@@ -34,23 +36,20 @@ public class Zero : Player, IDamagable, IAtacar, IAllAbilities
 
             Instantiate(circuloPrefab, worldPos, Quaternion.identity);
 
-            Debug.Log("Obejetivo Localizado: " + worldPos+" DisparandoMisiles");
-        }
+            Debug.Log("Objetivo Localizado: " + worldPos+" DisparandoMisiles");
+        
     }
 
-    public void Ability2()
+    public override void Ability2()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
+        
+        Debug.Log("Zero 2.0 ACTIVADO");
 
-            Debug.Log("Zero 2.0 ACTIVADO");
-        }
+        
     }
-    public void Definitiva()
+    public override void Definitiva()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (player != null)
+        if (player != null)
             {
                 // Obtener la posición del mouse en coordenadas del mundo
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -77,7 +76,7 @@ public class Zero : Player, IDamagable, IAtacar, IAllAbilities
             {
                 Debug.LogWarning("No se asignó el jugador en el Inspector.");
             }
-        }
+        
 
     }
 
@@ -86,12 +85,12 @@ public class Zero : Player, IDamagable, IAtacar, IAllAbilities
         throw new System.NotImplementedException();
     }
 
-    public void OutOfControl()
+    public override void OutOfControl()
     {
         throw new System.NotImplementedException();
     }
 
-    public void Passive()
+    public override void Passive()
     {
         throw new System.NotImplementedException();
     }

@@ -14,7 +14,7 @@ public interface IAtacar
     void Atacar(GameObject Target);
 }
 
-public interface IAllAbilities
+public interface IAbilities
 {
     void Passive();
     void Ability1();
