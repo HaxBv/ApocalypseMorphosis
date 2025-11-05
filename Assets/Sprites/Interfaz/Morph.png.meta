@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0bcc5ae9296109b4ebc81b3be9fe4233
+guid: 537aaf81b2ae40747914374a250fb984
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6757342017747644001
-    second: Salud 1_0
+      213: -1267053392459240033
+    second: Morph_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Salud 1_0
+      name: Morph_0
       rect:
         serializedVersion: 2
-        x: 349
-        y: 509
-        width: 592
-        height: 262
+        x: 129
+        y: 499
+        width: 932
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16e6ba163c6e6cd50800000000000000
-      internalID: 6757342017747644001
+      spriteID: f9d630717a58a6ee0800000000000000
+      internalID: -1267053392459240033
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Salud 1_0: 6757342017747644001
+      Morph_0: -1267053392459240033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

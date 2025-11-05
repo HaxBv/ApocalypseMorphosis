@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3816adc87b4917468e96ad27b4a0a82, type: 3}
-  m_Name: Enemy06
+  m_Script: {fileID: 11500000, guid: e92f6c99c185bf646bb4be2dc5fc0c57, type: 3}
+  m_Name: Form03
   m_EditorClassIdentifier: 
-  EnemyName: InkDinosaur
-  ID: 6
-  disaster: 3
-  Health: 0
+  ID: 0
+  ActualForm: 3
+  Health: 175
   Damage: 0
-  Speed: 0
-  sprite: {fileID: 0}
+  Armor: 0
+  BuffIsActive: 0
+  Speed: 4.5

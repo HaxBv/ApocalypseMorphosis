@@ -13,4 +13,14 @@ public enum ActiveForm
 public class FormsDataSO : ScriptableObject
 {
     
+    public ulong ID;
+
+    public ActiveForm ActualForm;
+    public int Health;
+    public int Damage;
+    public int Armor;
+    public bool BuffIsActive;
+    public float Speed;
+
+    
 }

@@ -4,16 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public enum ActiveForm
-{
-    InkMan,
-    Shadow,
-    Zero,
-    MaximWolf,
-    Konquest,
-    Draco,
-    Trueno,
-}
 public class Player : Entity, IAbilities
 {
     public InputSystem_Actions input;

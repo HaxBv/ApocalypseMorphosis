@@ -3,8 +3,8 @@ using UnityEngine;
 public class Dagas : MonoBehaviour
 {
     
-    public float speed = 10f;
-    public float lifetime = 2f;
+    public float speed;
+    public float lifetime;
 
     private Vector2 direccion;
 
