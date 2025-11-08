@@ -8,16 +8,20 @@ public class Shadow : Player, IDamagable, IAtacar
     public GameObject RafagaPrefab;
 
 
-    public float RangeDagas = 2f;
-    public float SpeedRafaga = 0.4f;
+    public float RangeDagas;
+    public float SplitDagas;
+
+    public float SpeedRafaga;
+    public float StartToRafaga;
+
     public Animator animator;
     public Transform player;
     void Start()
     {
-        
+
     }
 
-    
+
     void Update()
     {
         MovementMechanic();
@@ -30,36 +34,52 @@ public class Shadow : Player, IDamagable, IAtacar
     }
     public override void Ability1()
     {
-         float direccion = Mathf.Sign(transform.localScale.x);
-            Vector3 posicionFrente = transform.position + new Vector3(RangeDagas * direccion, 0, 0);
+        // Posición del mouse en mundo
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
 
-            // Dirección base (frente)
-            Vector2 dirFrente = new Vector2(direccion, 0);
-            Vector2 dirArriba = new Vector2(direccion, 0.5f).normalized;
-            Vector2 dirAbajo = new Vector2(direccion, -0.5f).normalized;
+        // Dirección hacia el mouse
+        Vector2 dirBase = (mousePos - transform.position).normalized;
 
-            // Instanciar las 3 dagas
-            CrearDaga(posicionFrente, dirFrente);
-            CrearDaga(posicionFrente, dirArriba);
-            CrearDaga(posicionFrente, dirAbajo);
-        
+        // NUEVO: origen desplazado
+        Vector3 origen = transform.position + (Vector3)dirBase * RangeDagas;
 
+        // Ángulo de separación (usa SplitDagas como grados)
+        Vector2 dirUp = Rotate(dirBase, SplitDagas);
+        Vector2 dirDown = Rotate(dirBase, -SplitDagas);
+
+        // Crear 3 dagas desde adelante del personaje
+        CrearDaga(origen, dirBase);
+        CrearDaga(origen, dirUp);
+        CrearDaga(origen, dirDown);
     }
+
+
+
+
+    // Función para rotar un vector 2D
+    Vector2 Rotate(Vector2 v, float degrees)
+    {
+        float rad = degrees * Mathf.Deg2Rad;
+        float sin = Mathf.Sin(rad);
+        float cos = Mathf.Cos(rad);
+
+        return new Vector2(
+            v.x * cos - v.y * sin,
+            v.x * sin + v.y * cos
+        );
+    }
+
+
 
     public override void Ability2()
     {
-        
-
-            Vector3 mousePos = Input.mousePosition;
 
 
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
 
-
-            worldPos.z = 0f;
-
-
-            transform.position = worldPos;
+        transform.position = mousePos;
 
         if (player != null)
         {
@@ -68,42 +88,46 @@ public class Shadow : Player, IDamagable, IAtacar
         }
         else
         {
-
             Debug.LogWarning("No se asignó el jugador en el Inspector.");
-
         }
 
     }
 
-    public  override void Definitiva()
+    public override void Definitiva()
     {
-        
+
         if (player != null)
-            
-        {   
+
+        {
+
             Debug.Log("1000 Sombras");
-            StartCoroutine(SpawnRafaga()); 
+            Debug.Log(StartToRafaga);
+            StartCoroutine(SpawnRafaga());
         }
-           
+
         else
-           
+
         {
             Debug.LogWarning("No se asignó el jugador en el Inspector.");
         }
-        
+
 
     }
+
     private IEnumerator SpawnRafaga()
     {
-        
+        yield return new WaitForSeconds(StartToRafaga);
         float[] rotaciones = { 0f, 45f, 90f, 135f };
         foreach (float rot in rotaciones)
         {
+
             Quaternion rotacion = Quaternion.Euler(0f, 0f, rot);
             Instantiate(RafagaPrefab, player.position, rotacion);
             yield return new WaitForSeconds(SpeedRafaga);
         }
     }
+
+
 
     public override void OutOfControl()
     {

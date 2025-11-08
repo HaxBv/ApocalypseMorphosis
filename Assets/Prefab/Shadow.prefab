@@ -112,7 +112,9 @@ MonoBehaviour:
   DagasPrefab: {fileID: 1873457528791605043, guid: 17f58dde589d8664cbaf24fa9b90e5f9, type: 3}
   SlashPrefab: {fileID: 2283985827471823607, guid: eca24dd8400084545aa23fd3029d3463, type: 3}
   RafagaPrefab: {fileID: 5027220801585524925, guid: da94a3e47eaf36c4a8e614ca3897e050, type: 3}
-  RangeDagas: 2
+  RangeDagas: 1.5
+  SplitDagas: 15
   SpeedRafaga: 0.2
+  StartToRafaga: 1
   animator: {fileID: 0}
   player: {fileID: 4717735279572509585}

@@ -8,7 +8,7 @@ public class Aullido : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

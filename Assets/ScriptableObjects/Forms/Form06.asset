@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92f6c99c185bf646bb4be2dc5fc0c57, type: 3}
   m_Name: Form06
   m_EditorClassIdentifier: 
-  ID: 0
-  ActualForm: 6
+  Name: Trueno
+  ID: 6
+  rangeForm: 0
   Health: 150
   Damage: 15
   Armor: 0

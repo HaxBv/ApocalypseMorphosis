@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92f6c99c185bf646bb4be2dc5fc0c57, type: 3}
   m_Name: BaseForm
   m_EditorClassIdentifier: 
+  Name: InkMan
   ID: 0
-  ActualForm: 0
+  rangeForm: 0
   Health: 100
   Damage: 10
   Armor: 0

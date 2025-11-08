@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92f6c99c185bf646bb4be2dc5fc0c57, type: 3}
   m_Name: Form04
   m_EditorClassIdentifier: 
-  ID: 0
-  ActualForm: 4
+  Name: Konquest
+  ID: 4
+  rangeForm: 0
   Health: 200
   Damage: 0
   Armor: 20

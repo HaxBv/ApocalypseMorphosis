@@ -1,21 +1,20 @@
 using UnityEngine;
-public enum ActiveForm
+public enum RangeForm
 {
-    InkMan,
-    Shadow,
-    Zero,
-    MaximWolf,
-    Konquest,
-    Draco,
-    Trueno,
+    
+    S,
+    A,
+    B,
+    C,
+
 }
 [CreateAssetMenu(fileName = "FormsDataSO", menuName = "ApocalypseMorphosis/Forms/FormsDataSO")]
 public class FormsDataSO : ScriptableObject
 {
-    
+    public string Name;
     public ulong ID;
 
-    public ActiveForm ActualForm;
+    public RangeForm rangeForm;
     public int Health;
     public int Damage;
     public int Armor;

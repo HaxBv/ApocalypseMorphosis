@@ -8,7 +8,7 @@ public class Slash : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

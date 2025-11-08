@@ -22,21 +22,17 @@ public class Zero : Player, IDamagable, IAtacar
     }
     public override void Ability1()
     {
-        base.Ability1();
+
+
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
         
 
-            Vector3 mousePos = Input.mousePosition;
+        Instantiate(circuloPrefab, mousePos, Quaternion.identity);
 
-
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-
-
-            worldPos.z = 0f;
-
-
-            Instantiate(circuloPrefab, worldPos, Quaternion.identity);
-
-            Debug.Log("Objetivo Localizado: " + worldPos+" DisparandoMisiles");
+            Debug.Log("Objetivo Localizado: " + mousePos+" DisparandoMisiles");
         
     }
 
