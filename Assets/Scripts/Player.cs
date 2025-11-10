@@ -1,12 +1,15 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class Player : Entity, IAbilities
+public class Player : MonoBehaviour , IAbilities
 {
+
+    public FormsDataSO data;
+
     public InputSystem_Actions input;
+
+    private float CurrentSpeed;
 
     public int Level = 1;
     private int LevelMax;
@@ -40,6 +43,7 @@ public class Player : Entity, IAbilities
     private void Awake()
     {
         input = new();
+        CurrentSpeed = data.Speed;
     }
     private void OnEnable()
     {
@@ -104,7 +108,7 @@ public class Player : Entity, IAbilities
     public void MovementMechanic()
 
     {
-        transform.position += (Vector3)moveInput * MoveSpeed * Time.deltaTime;
+        transform.position += (Vector3)moveInput * CurrentSpeed * Time.deltaTime;
     }
     /*public virtual void Pasive()
     {

@@ -100,9 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62317e18edcfafd41943a86f06c97937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpActual: 0
-  AtkActual: 0
-  MoveSpeed: 3
+  data: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
   Level: 1
   ExpActual: 0
   Energyactual: 0

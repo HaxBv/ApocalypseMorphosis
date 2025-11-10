@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class EnemyBase : Entity
+public class EnemyBase : MonoBehaviour
 {
     
     void Start()

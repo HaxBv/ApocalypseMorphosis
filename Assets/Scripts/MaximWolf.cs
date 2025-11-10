@@ -91,19 +91,19 @@ public class MaximWolf : Player, IDamagable, IAtacar
     
 
 
-    public void TakeDamage(int damage)
+   public void TakeDamage(int damage)
     {
-        HpActual -= damage;
+       /* HpActual -= damage;
 
         if (HpActual > 0)
         {
             Passive();
-        }
+        }*/
 
     }
     public void Atacar(GameObject target)
     {
-        IDamagable receptor = target.GetComponent<IDamagable>();
+        /*IDamagable receptor = target.GetComponent<IDamagable>();
 
         if (receptor != null)
         {
@@ -112,7 +112,7 @@ public class MaximWolf : Player, IDamagable, IAtacar
             {
                 Passive();
             }
-        }
+        }*/
 
 
     }
