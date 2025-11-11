@@ -16,9 +16,11 @@ public class Shadow : Player, IDamagable, IAtacar
 
     public Animator animator;
     public Transform player;
+    public SpriteRenderer Sprite;
+
     void Start()
     {
-
+        Sprite = GetComponent<SpriteRenderer>();
     }
 
 
@@ -96,6 +98,9 @@ public class Shadow : Player, IDamagable, IAtacar
     public override void Definitiva()
     {
 
+        /*Color color = Color.white;
+        color.a = ;
+        Sprite.color = color;*/
         if (player != null)
 
         {

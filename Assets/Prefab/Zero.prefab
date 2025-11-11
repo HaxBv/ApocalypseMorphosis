@@ -109,5 +109,5 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   circuloPrefab: {fileID: 3694464459483174546, guid: 4ee29a984c91ea344b140cf6a91f8004, type: 3}
   RayoLazerPrefab: {fileID: 6737086149380483000, guid: eff1b2ffbf0b78e43925e3fac3869cd6, type: 3}
-  RangeLazer: -0.2
+  RangeLazer: 0.2
   player: {fileID: 3190207813654514489}

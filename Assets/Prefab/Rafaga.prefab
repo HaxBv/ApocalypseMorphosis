@@ -101,3 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DagasPrefab: {fileID: 5027220801585524925}
+  lifetime: 1.5

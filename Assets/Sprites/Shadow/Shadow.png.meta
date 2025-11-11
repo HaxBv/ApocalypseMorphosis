@@ -116,12 +116,12 @@ TextureImporter:
       name: Shadow_0
       rect:
         serializedVersion: 2
-        x: 509
-        y: 209
+        x: 506
+        y: 201
         width: 1907
         height: 1937
       alignment: 9
-      pivot: {x: 0.65, y: 0.5}
+      pivot: {x: 0.6886049, y: 0.54677814}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
