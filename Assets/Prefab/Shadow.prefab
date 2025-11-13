@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 495114090315568333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.6782, y: -8.6749, z: 0}
-  m_LocalScale: {x: 0.13767698, y: 0.13767698, z: 0.13767698}
+  m_LocalPosition: {x: -9.4115, y: -9.5151, z: 0}
+  m_LocalScale: {x: 0.04466056, y: 0.04466056, z: 0.04466056}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,3 +116,4 @@ MonoBehaviour:
   StartToRafaga: 1
   animator: {fileID: 0}
   player: {fileID: 4717735279572509585}
+  Sprite: {fileID: 5399121669488187297}

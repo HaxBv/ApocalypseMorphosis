@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InkMan : PlayerInputs
+public class PlayerAnimations : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,6 +11,6 @@ public class InkMan : PlayerInputs
     // Update is called once per frame
     void Update()
     {
-        MovementMechanic();
+        
     }
 }

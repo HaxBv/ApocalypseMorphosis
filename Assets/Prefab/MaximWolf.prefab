@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1714525334350936676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.2908, y: -18.545, z: 0}
-  m_LocalScale: {x: 0.15352781, y: 0.15352781, z: 0.15352781}
+  m_LocalPosition: {x: -19.3865, y: -19.4701, z: 0}
+  m_LocalScale: {x: 0.05311689, y: 0.05311689, z: 0.05311689}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   cuadradoPrefab: {fileID: 7736930075223745082, guid: 6c59ca0eba0ab804997f6966e68caec0, type: 3}
   circuloPrefab: {fileID: 8595332212404942488, guid: dfa9d249fffc4074eb95bb72df4b6ef2, type: 3}
-  RangeLeftClick: 3.5
+  RangeLeftClick: 1.3
   RageActual: 0
   RageMax: 100
   RageGained: 2

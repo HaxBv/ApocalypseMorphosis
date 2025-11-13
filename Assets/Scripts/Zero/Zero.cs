@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Zero : Player, IDamagable, IAtacar
+public class Zero : PlayerInputs, IDamagable, IAtacar
 {
     public GameObject circuloPrefab;
     public GameObject RayoLazerPrefab;

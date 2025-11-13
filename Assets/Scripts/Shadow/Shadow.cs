@@ -1,7 +1,7 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-public class Shadow : Player, IDamagable, IAtacar
+public class Shadow : PlayerInputs, IDamagable, IAtacar
 {
     public GameObject DagasPrefab;
     public GameObject SlashPrefab;
@@ -14,7 +14,7 @@ public class Shadow : Player, IDamagable, IAtacar
     public float SpeedRafaga;
     public float StartToRafaga;
 
-    public Animator animator;
+    public Animator Controller;
     public Transform player;
     public SpriteRenderer Sprite;
 
@@ -122,7 +122,7 @@ public class Shadow : Player, IDamagable, IAtacar
     private IEnumerator SpawnRafaga()
     {
         yield return new WaitForSeconds(StartToRafaga);
-        float[] rotaciones = { 0f, 45f, 90f, 135f };
+        float[] rotaciones = { 0f, 35f, 90f, 145f };
         foreach (float rot in rotaciones)
         {
 
@@ -151,7 +151,21 @@ public class Shadow : Player, IDamagable, IAtacar
         }
     }
 
+    private void SetMoveAnimation(Vector2 vector)
+    {
+        print(vector);
 
+        if (vector.x != 0)
+            Controller.SetBool("isMoving", true);
+        else
+            Controller.SetBool("isMoving", false);
+
+        if (vector.x < 0)
+            Sprite.flipX = true;
+
+        if (vector.x > 0)
+            Sprite.flipX = false;
+    }
 
     public void TakeDamage(int damage)
     {

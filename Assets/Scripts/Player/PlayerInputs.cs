@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour , IAbilities
+public class PlayerInputs : MonoBehaviour , IAbilities
 {
 
     public FormsDataSO data;
@@ -36,9 +36,9 @@ public class Player : MonoBehaviour , IAbilities
     public Vector2 moveInput;
 
 
-    public Action<Player> OnAbility1Trigger;
-    public Action<Player> OnAbility2Trigger;
-    public Action<Player> OnDefinitivaTrigger;
+    public Action<PlayerInputs> OnAbility1Trigger;
+    public Action<PlayerInputs> OnAbility2Trigger;
+    public Action<PlayerInputs> OnDefinitivaTrigger;
 
     private void Awake()
     {

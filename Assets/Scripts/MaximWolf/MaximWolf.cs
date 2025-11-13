@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
-public class MaximWolf : Player, IDamagable, IAtacar
+public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 {
 
     public GameObject cuadradoPrefab;
