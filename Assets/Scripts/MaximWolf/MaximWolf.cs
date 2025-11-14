@@ -20,9 +20,15 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
    
     public Transform player;
 
+    private float CurrentSkill1Cost;
+    private float CurrentSkill2Cost;
+    private float CurrentDefinitivaCost;
+
     void Start()
     {
-        
+        CurrentSkill1Cost = data.Skill1Cost;
+        CurrentSkill2Cost = data.Skill2Cost;
+        CurrentDefinitivaCost = data.DefinitivaCost;
     }
 
     
@@ -31,7 +37,7 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 
 
         MovementMechanic();
-
+        Recharge();
 
     }
 
@@ -42,43 +48,78 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
     }
     public override void Ability1()
     {
-       
-           
-            float direccion = Mathf.Sign(transform.localScale.x);
-            Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
 
-            Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
-            
+        if (data.RecargaActualSkill1 >= data.TiempoMaximoRecarga1)
+        {
 
-    
+            if (GameManager.Instance.EnergiaActual >= CurrentSkill1Cost)
+            {
+                data.RecargaActualSkill1 = 0;
+                GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
+                float direccion = Mathf.Sign(transform.localScale.x);
+                Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
+
+                Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
+            }
+            else
+                Debug.Log("Energia Insuficiente");
+        }
+        else
+            Debug.Log("Habilidad en Enfriamiento");
+
+
+
     }
     
     public override void Ability2()
     {
-  
-        if (player != null)
+        if (data.RecargaActualSkill2 >= data.TiempoMaximoRecarga2)
         {
-            Instantiate(circuloPrefab, player.position, Quaternion.identity);
-            Debug.Log("Aullido Aterrador");
+            if (GameManager.Instance.EnergiaActual >= CurrentSkill2Cost)
+            {
+                if (player != null)
+                {
+                    data.RecargaActualSkill2 = 0;
+                    GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
+                    
+                    Instantiate(circuloPrefab, player.position, Quaternion.identity);
+                    Debug.Log("Aullido Aterrador");
+                }
+
+                else
+                {
+
+                    Debug.LogWarning("No se asignó el jugador en el Inspector.");
+
+                }
+            }
+            else
+                Debug.Log("Energia Insuficiente");
         }
-            
         else
-        {
-               
-            Debug.LogWarning("No se asignó el jugador en el Inspector.");
-            
-        }
-        
+            Debug.Log("Habilidad en Enfriamiento");
+
 
     }
 
     public override void Definitiva()
     {
-        
-            Debug.Log("Bestia Liberada");
+        if (data.RecargaActualDefinitiva >= data.TiempoMaximoDefinitiva)
+        {
+            
+            if (GameManager.Instance.EnergiaActual >= CurrentDefinitivaCost)
+            {
+                data.RecargaActualDefinitiva = 0;
+                GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
+                Debug.Log("Bestia Liberada");
+            }
+            else
+                Debug.Log("Energia Insuficiente");
+        }
+        else
+            Debug.Log("Habilidad en Enfriamiento");
 
-        
-        
+
     }
 
     public override void OutOfControl()
@@ -116,7 +157,22 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 
 
     }
-    
+    public override void Recharge()
+    {
+        if (data.RecargaActualSkill1 < data.TiempoMaximoRecarga1)
+        {
+            data.RecargaActualSkill1 += Time.deltaTime;
+        }
+        if (data.RecargaActualSkill2 < data.TiempoMaximoRecarga2)
+        {
+            data.RecargaActualSkill2 += Time.deltaTime;
+        }
+        if (data.RecargaActualDefinitiva < data.TiempoMaximoDefinitiva)
+        {
+            data.RecargaActualDefinitiva += Time.deltaTime;
+        }
+    }
 
-    
+
+
 }

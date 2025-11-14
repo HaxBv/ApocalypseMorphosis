@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c84c5be52b8628d44937a7b68f30f379
+guid: 6cb5cfd2a2facc94199dbf77eae1899d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -489081563903144588
-    second: Skill2 Shadow_0
+      213: -4590176585876328073
+    second: Skill2 Shadow 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skill2 Shadow_0
+      name: Skill2 Shadow 1_0
       rect:
         serializedVersion: 2
-        x: 609
-        y: 639
-        width: 172
-        height: 172
+        x: 744
+        y: 874
+        width: 162
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47d4c5da8ee6639f0800000000000000
-      internalID: -489081563903144588
+      spriteID: 771b68607ba6c40c0800000000000000
+      internalID: -4590176585876328073
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Skill2 Shadow_0: -489081563903144588
+      Skill2 Shadow 1_0: -4590176585876328073
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

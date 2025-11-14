@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BarraEnergia : MonoBehaviour
 {
-    public FormsDataSO data;
+    
 
     public Image rellenoBarraEnergia;
     
@@ -17,6 +17,10 @@ public class BarraEnergia : MonoBehaviour
 
     void Update()
     {
-        
+        if (GameManager.Instance != null)
+        {
+            float porcentaje = GameManager.Instance.EnergiaActual / GameManager.Instance.EnergiaMaxima;
+            rellenoBarraEnergia.fillAmount = porcentaje;
+        }
     }
 }

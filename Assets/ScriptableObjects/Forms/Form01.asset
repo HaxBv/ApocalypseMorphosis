@@ -20,3 +20,12 @@ MonoBehaviour:
   Armor: 0
   BuffIsActive: 0
   Speed: 4
+  Skill1Cost: 5
+  Skill2Cost: 15
+  DefinitivaCost: 30
+  RecargaActualSkill1: 5.000566
+  TiempoMaximoRecarga1: 5
+  RecargaActualSkill2: 10
+  TiempoMaximoRecarga2: 10
+  RecargaActualDefinitiva: 40
+  TiempoMaximoDefinitiva: 40

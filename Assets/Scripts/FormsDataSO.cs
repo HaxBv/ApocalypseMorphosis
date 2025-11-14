@@ -19,7 +19,23 @@ public class FormsDataSO : ScriptableObject
     public int Damage;
     public int Armor;
     public bool BuffIsActive;
+
     public float Speed;
 
-    
+    public float Skill1Cost;
+    public float Skill2Cost;
+    public float DefinitivaCost;
+
+
+    public float RecargaActualSkill1;
+    public float TiempoMaximoRecarga1;
+
+    public float RecargaActualSkill2;
+    public float TiempoMaximoRecarga2;
+
+    public float RecargaActualDefinitiva;
+    public float TiempoMaximoDefinitiva;
+
+
+
 }

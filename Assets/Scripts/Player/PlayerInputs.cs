@@ -1,15 +1,19 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputs : MonoBehaviour , IAbilities
+public class PlayerInputs : MonoBehaviour , IAbilities, IRechargeAbility
 {
 
     public FormsDataSO data;
 
+    public Rigidbody2D rb;
     public InputSystem_Actions input;
 
     private float CurrentSpeed;
+
+    
 
     public int Level = 1;
     private int LevelMax;
@@ -44,6 +48,13 @@ public class PlayerInputs : MonoBehaviour , IAbilities
     {
         input = new();
         CurrentSpeed = data.Speed;
+        rb = GetComponent<Rigidbody2D>();
+
+
+
+
+
+
     }
     private void OnEnable()
     {
@@ -61,7 +72,8 @@ public class PlayerInputs : MonoBehaviour , IAbilities
     }
     private void OnSkill1(InputAction.CallbackContext context)
     {
-        Ability1();
+        Ability1();    
+
     }
     private void OnSkill2(InputAction.CallbackContext context)
     {
@@ -102,13 +114,13 @@ public class PlayerInputs : MonoBehaviour , IAbilities
     void Update()
     {
        
-       
-        
+
+
     }
     public void MovementMechanic()
 
     {
-        transform.position += (Vector3)moveInput * CurrentSpeed * Time.deltaTime;
+        rb.linearVelocity = moveInput * CurrentSpeed;
     }
     /*public virtual void Pasive()
     {
@@ -142,6 +154,11 @@ public class PlayerInputs : MonoBehaviour , IAbilities
     }
 
     public virtual void OutOfControl()
+    {
+        throw new NotImplementedException();
+    }
+
+    public virtual void Recharge()
     {
         throw new NotImplementedException();
     }

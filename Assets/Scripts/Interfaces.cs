@@ -23,3 +23,8 @@ public interface IAbilities
     void OutOfControl();
 }
 
+public interface IRechargeAbility
+{
+    void Recharge();
+}
+
