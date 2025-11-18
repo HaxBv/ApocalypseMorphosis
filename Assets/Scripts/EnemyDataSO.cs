@@ -20,5 +20,7 @@ public class EnemyDataSO : ScriptableObject
     public int Damage;
     public float Speed;
 
+    public float SpawnRate;
+
     public Sprite sprite;
 }

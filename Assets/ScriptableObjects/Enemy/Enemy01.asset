@@ -18,4 +18,5 @@ MonoBehaviour:
   Health: 80
   Damage: 20
   Speed: 2
+  SpawnRate: 5
   sprite: {fileID: 0}
