@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChompPrefab: {fileID: 7736930075223745082}
+  LifeTime: 0.7

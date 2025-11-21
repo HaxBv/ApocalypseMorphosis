@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 570694193591568219}
   m_Layer: 0
   m_Name: InkMan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,9 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ac3651e8f8e746f49aaf85fa6ed4b1b7, type: 2}
-  Level: 1
-  ExpActual: 0
-  Energyactual: 0
+  rb: {fileID: 0}
   ControlActual: 0
   Cooldown: 0
   moveInput: {x: 0, y: 0}

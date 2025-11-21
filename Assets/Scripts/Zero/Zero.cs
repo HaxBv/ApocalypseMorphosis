@@ -1,22 +1,33 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Zero : PlayerInputs, IDamagable, IAtacar
 {
-    public GameObject circuloPrefab;
-    public GameObject RayoLazerPrefab;
+    public SkillsDataSO Skill1;
+    public SkillsDataSO Skill2;
+    public SkillsDataSO Ult;
+    
+
+
     public float RangeLazer = 2f;
     public Transform player;
 
     private float CurrentSkill1Cost;
     private float CurrentSkill2Cost;
     private float CurrentDefinitivaCost;
-   
+
+
+    private Coroutine buffCoroutine;
+
+
     void Start()
     {
-        CurrentSkill1Cost = data.Skill1Cost;
-        CurrentSkill2Cost = data.Skill2Cost;
-        CurrentDefinitivaCost = data.DefinitivaCost;
+        
+        CurrentSkill1Cost = Formdata.Skill1Cost;
+        CurrentSkill2Cost = Formdata.Skill2Cost;
+        CurrentDefinitivaCost = Formdata.DefinitivaCost;
     }
 
     void Update()
@@ -27,18 +38,18 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
     }
     public override void Ability1()
     {
-        if (data.RecargaActualSkill1 >= data.TiempoMaximoRecarga1)
+        if (Formdata.RecargaActualSkill1 >= Formdata.TiempoMaximoRecarga1)
         {
             if (GameManager.Instance.EnergiaActual >= CurrentSkill1Cost)
             {
-                data.RecargaActualSkill1 = 0;
+                Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePos.z = 0;
 
 
 
-                Instantiate(circuloPrefab, mousePos, Quaternion.identity);
+                Instantiate(Skill1.prefab, mousePos, Quaternion.identity);
 
                 Debug.Log("Objetivo Localizado: " + mousePos + " DisparandoMisiles");
             }
@@ -54,27 +65,65 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
 
     public override void Ability2()
     {
-
-        if (data.RecargaActualSkill2 >= data.TiempoMaximoRecarga2)
+        if (Formdata.RecargaActualSkill2 >= Formdata.TiempoMaximoRecarga2)
         {
             if (GameManager.Instance.EnergiaActual >= CurrentSkill2Cost)
             {
-                data.RecargaActualSkill2 = 0;
+                Formdata.RecargaActualSkill2 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
-                Debug.Log("Zero 2.0 ACTIVADO");
+                StartCoroutine(AplicarBuff(Skill2));
+               
             }
-            else
-                Debug.Log("Energia Insuficiente");
+            else Debug.Log("Energia Insuficiente");
         }
-        else
-            Debug.Log("Habilidad en Enfriamiento");
-
-
-
+        else Debug.Log("Habilidad en Enfriamiento");
     }
+
+    private IEnumerator AplicarBuff(SkillsDataSO skill)
+    {
+        Debug.Log("Aplicando BUFF desde Skill2");
+
+        // Si ya había un buff activo, se reinicia
+        if (buffCoroutine != null)
+            StopCoroutine(buffCoroutine);
+
+        buffCoroutine = StartCoroutine(BuffRoutine(skill));
+        yield break;
+    }
+
+    private IEnumerator BuffRoutine(SkillsDataSO skill)
+    {
+        // Sumar al acumulador
+        stats.buffDamage += (int)skill.bonusDamage;
+        stats.buffArmor += (int)skill.bonusArmor;
+        stats.buffSpeedMovement += skill.bonusSpeed;
+        stats.buffSpeedAttack += skill.bonusAttackSpeed;
+
+        // Reaplicar stats actuales
+        stats.AplicarMejorasPorNivel();
+
+        Debug.Log($"BUFF aplicado por {skill.duration} segundos");
+
+        yield return new WaitForSeconds(skill.duration);
+
+        // Restar del acumulador
+        stats.buffDamage -= (int)skill.bonusDamage;
+        stats.buffArmor -= (int)skill.bonusArmor;
+        stats.buffSpeedMovement -= skill.bonusSpeed;
+        stats.buffSpeedAttack -= skill.bonusAttackSpeed;
+
+        // Reaplicar stats actuales
+        stats.AplicarMejorasPorNivel();
+
+        Debug.Log("BUFF terminado");
+    }
+
+
+
+
     public override void Definitiva()
     {
-        if (data.RecargaActualDefinitiva >= data.TiempoMaximoDefinitiva)
+        if (Formdata.RecargaActualDefinitiva >= Formdata.TiempoMaximoDefinitiva)
 
         {
             if (GameManager.Instance.EnergiaActual >= CurrentDefinitivaCost)
@@ -83,7 +132,7 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
 
                 if (player != null)
                 {
-                    data.RecargaActualDefinitiva = 0;
+                    Formdata.RecargaActualDefinitiva = 0;
                     GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
                     // Obtener la posición del mouse en coordenadas del mundo
                     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -99,7 +148,9 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
 
                     // Crear el rectángulo rotado hacia el mouse
                     Quaternion rotacion = Quaternion.Euler(0f, 0f, angulo);
-                    GameObject rayo = Instantiate(RayoLazerPrefab, posicionFrente, rotacion);
+                    GameObject rayo = Instantiate(Ult.prefab, posicionFrente, rotacion);
+                    
+
 
                     //Hacer que el rayo siga al jugador
                     rayo.transform.SetParent(player);
@@ -144,17 +195,17 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
 
     public override void Recharge()
     {
-        if (data.RecargaActualSkill1 < data.TiempoMaximoRecarga1)
+        if (Formdata.RecargaActualSkill1 < Formdata.TiempoMaximoRecarga1)
         {
-            data.RecargaActualSkill1 += Time.deltaTime;
+            Formdata.RecargaActualSkill1 += Time.deltaTime;
         }
-        if (data.RecargaActualSkill2 < data.TiempoMaximoRecarga2)
+        if (Formdata.RecargaActualSkill2 < Formdata.TiempoMaximoRecarga2)
         {
-            data.RecargaActualSkill2 += Time.deltaTime;
+            Formdata.RecargaActualSkill2 += Time.deltaTime;
         }
-        if (data.RecargaActualDefinitiva < data.TiempoMaximoDefinitiva)
+        if (Formdata.RecargaActualDefinitiva < Formdata.TiempoMaximoDefinitiva)
         {
-            data.RecargaActualDefinitiva += Time.deltaTime;
+            Formdata.RecargaActualDefinitiva += Time.deltaTime;
         }
     }
 }

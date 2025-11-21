@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 4717735279572509585}
   - component: {fileID: 5399121669488187297}
   - component: {fileID: 6065550408808067352}
+  - component: {fileID: 9024364962882120955}
   - component: {fileID: 6253634090002897028}
+  - component: {fileID: 3807937052002728386}
   m_Layer: 0
   m_Name: Shadow
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,23 +103,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61671ec8c3fbbf5449c6fb2e66b93dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 47b99f1effb8f4047b3839c3b0453441, type: 2}
+  Formdata: {fileID: 11400000, guid: 47b99f1effb8f4047b3839c3b0453441, type: 2}
   rb: {fileID: 0}
-  Level: 1
-  ExpActual: 0
-  Energyactual: 0
   ControlActual: 0
-  Cooldown: 0
   moveInput: {x: 0, y: 0}
-  DagasPrefab: {fileID: 1873457528791605043, guid: 17f58dde589d8664cbaf24fa9b90e5f9, type: 3}
-  SlashPrefab: {fileID: 2283985827471823607, guid: eca24dd8400084545aa23fd3029d3463, type: 3}
-  RafagaPrefab: {fileID: 5027220801585524925, guid: da94a3e47eaf36c4a8e614ca3897e050, type: 3}
+  Skill1: {fileID: 11400000, guid: 1e47de849f12f884f873b78fd2388a56, type: 2}
+  Skill2: {fileID: 11400000, guid: c0b040716902e964d85fdf586d12664b, type: 2}
+  Ult: {fileID: 11400000, guid: 95804173b499896499be07d352f78169, type: 2}
   RangeDagas: 1.5
   SplitDagas: 15
   SpeedRafaga: 0.2
   StartToRafaga: 1
   player: {fileID: 4717735279572509585}
   Sprite: {fileID: 5399121669488187297}
+--- !u!114 &9024364962882120955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495114090315568333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2a1cc938bbe954e9ae38f6ad60073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseFormData: {fileID: 11400000, guid: 47b99f1effb8f4047b3839c3b0453441, type: 2}
+  currentHealth: 0
+  currentDamage: 0
+  currentArmor: 0
+  currentSpeedMovement: 0
+  currentSpeedAttack: 0
+  HealthPerLevel: 0
+  DamagePerLevel: 0
+  ArmorPerLevel: 0
+  SpeedMovementPerLevel: 0.25
+  SpeedAttackPerLevel: 0
+  buffDamage: 0
+  buffArmor: 0
+  buffSpeedMovement: 0
+  buffSpeedAttack: 0
 --- !u!50 &6253634090002897028
 Rigidbody2D:
   serializedVersion: 5
@@ -145,3 +170,49 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &3807937052002728386
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495114090315568333}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -3.5969067, y: -0.9060936}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.6886049, y: 0.54677814}
+    oldSize: {x: 19.07112, y: 19.37}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 19.07112, y: 19.37}
+  m_EdgeRadius: 0

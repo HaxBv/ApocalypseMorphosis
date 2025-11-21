@@ -18,5 +18,14 @@ MonoBehaviour:
   Health: 125
   Damage: 1
   Armor: 0
-  BuffIsActive: 0
-  Speed: 3.5
+  SpeedMovement: 3.5
+  SpeedAttack: 0
+  Skill1Cost: 0
+  Skill2Cost: 0
+  DefinitivaCost: 0
+  RecargaActualSkill1: 0
+  TiempoMaximoRecarga1: 0
+  RecargaActualSkill2: 0
+  TiempoMaximoRecarga2: 0
+  RecargaActualDefinitiva: 0
+  TiempoMaximoDefinitiva: 0

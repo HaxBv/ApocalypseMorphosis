@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,11 +7,14 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 {
+    public SkillsDataSO Skill1;
+    public SkillsDataSO Skill2;
+    public SkillsDataSO Ult;
 
-    public GameObject cuadradoPrefab;
-    public GameObject circuloPrefab;
+  
     public float RangeLeftClick = 4f;
-   
+
+    private Coroutine buffCoroutine;
 
     public int RageActual;
     public int RageMax = 100;
@@ -26,9 +30,9 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 
     void Start()
     {
-        CurrentSkill1Cost = data.Skill1Cost;
-        CurrentSkill2Cost = data.Skill2Cost;
-        CurrentDefinitivaCost = data.DefinitivaCost;
+        CurrentSkill1Cost = Formdata.Skill1Cost;
+        CurrentSkill2Cost = Formdata.Skill2Cost;
+        CurrentDefinitivaCost = Formdata.DefinitivaCost;
     }
 
     
@@ -49,17 +53,17 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
     public override void Ability1()
     {
 
-        if (data.RecargaActualSkill1 >= data.TiempoMaximoRecarga1)
+        if (Formdata.RecargaActualSkill1 >= Formdata.TiempoMaximoRecarga1)
         {
 
             if (GameManager.Instance.EnergiaActual >= CurrentSkill1Cost)
             {
-                data.RecargaActualSkill1 = 0;
+                Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
                 float direccion = Mathf.Sign(transform.localScale.x);
                 Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
 
-                Instantiate(cuadradoPrefab, posicionFrente, Quaternion.identity);
+                Instantiate(Skill1.prefab, posicionFrente, Quaternion.identity);
             }
             else
                 Debug.Log("Energia Insuficiente");
@@ -73,16 +77,16 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
     
     public override void Ability2()
     {
-        if (data.RecargaActualSkill2 >= data.TiempoMaximoRecarga2)
+        if (Formdata.RecargaActualSkill2 >= Formdata.TiempoMaximoRecarga2)
         {
             if (GameManager.Instance.EnergiaActual >= CurrentSkill2Cost)
             {
                 if (player != null)
                 {
-                    data.RecargaActualSkill2 = 0;
+                    Formdata.RecargaActualSkill2 = 0;
                     GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
                     
-                    Instantiate(circuloPrefab, player.position, Quaternion.identity);
+                    Instantiate(Skill2.prefab, player.position, Quaternion.identity);
                     Debug.Log("Aullido Aterrador");
                 }
 
@@ -104,22 +108,58 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 
     public override void Definitiva()
     {
-        if (data.RecargaActualDefinitiva >= data.TiempoMaximoDefinitiva)
+        if (Formdata.RecargaActualDefinitiva >= Formdata.TiempoMaximoDefinitiva)
         {
             
             if (GameManager.Instance.EnergiaActual >= CurrentDefinitivaCost)
             {
-                data.RecargaActualDefinitiva = 0;
+                Formdata.RecargaActualDefinitiva = 0;
                 GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
-                Debug.Log("Bestia Liberada");
+                StartCoroutine(AplicarBuff(Ult));
+
             }
-            else
-                Debug.Log("Energia Insuficiente");
+            else Debug.Log("Energia Insuficiente");
         }
-        else
-            Debug.Log("Habilidad en Enfriamiento");
+        else Debug.Log("Habilidad en Enfriamiento");
+    }
 
+    private IEnumerator AplicarBuff(SkillsDataSO skill)
+    {
+        Debug.Log("Aplicando BUFF desde Skill2");
 
+        // Si ya había un buff activo, se reinicia
+        if (buffCoroutine != null)
+            StopCoroutine(buffCoroutine);
+
+        buffCoroutine = StartCoroutine(BuffRoutine(skill));
+        yield break;
+    }
+
+    private IEnumerator BuffRoutine(SkillsDataSO skill)
+    {
+        // Sumar al acumulador
+        stats.buffDamage += (int)skill.bonusDamage;
+        stats.buffArmor += (int)skill.bonusArmor;
+        stats.buffSpeedMovement += skill.bonusSpeed;
+        stats.buffSpeedAttack += skill.bonusAttackSpeed;
+
+        // Reaplicar stats actuales
+        stats.AplicarMejorasPorNivel();
+
+        Debug.Log($"BUFF aplicado por {skill.duration} segundos");
+
+        yield return new WaitForSeconds(skill.duration);
+
+        // Restar del acumulador
+        stats.buffDamage -= (int)skill.bonusDamage;
+        stats.buffArmor -= (int)skill.bonusArmor;
+        stats.buffSpeedMovement -= skill.bonusSpeed;
+        stats.buffSpeedAttack -= skill.bonusAttackSpeed;
+
+        // Reaplicar stats actuales
+        stats.AplicarMejorasPorNivel();
+
+        Debug.Log("BUFF terminado");
     }
 
     public override void OutOfControl()
@@ -159,17 +199,17 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
     }
     public override void Recharge()
     {
-        if (data.RecargaActualSkill1 < data.TiempoMaximoRecarga1)
+        if (Formdata.RecargaActualSkill1 < Formdata.TiempoMaximoRecarga1)
         {
-            data.RecargaActualSkill1 += Time.deltaTime;
+            Formdata.RecargaActualSkill1 += Time.deltaTime;
         }
-        if (data.RecargaActualSkill2 < data.TiempoMaximoRecarga2)
+        if (Formdata.RecargaActualSkill2 < Formdata.TiempoMaximoRecarga2)
         {
-            data.RecargaActualSkill2 += Time.deltaTime;
+            Formdata.RecargaActualSkill2 += Time.deltaTime;
         }
-        if (data.RecargaActualDefinitiva < data.TiempoMaximoDefinitiva)
+        if (Formdata.RecargaActualDefinitiva < Formdata.TiempoMaximoDefinitiva)
         {
-            data.RecargaActualDefinitiva += Time.deltaTime;
+            Formdata.RecargaActualDefinitiva += Time.deltaTime;
         }
     }
 

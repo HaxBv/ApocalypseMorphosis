@@ -3,9 +3,11 @@ using UnityEngine;
 public class Chomp : MonoBehaviour
 {
     public GameObject ChompPrefab;
+
+    public float LifeTime;
     void Start()
     {
-        Destroy(gameObject,0.7f);
+        Destroy(gameObject,LifeTime);
     }
 
     void Update()

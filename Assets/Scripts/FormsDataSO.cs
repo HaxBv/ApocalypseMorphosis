@@ -8,19 +8,19 @@ public enum RangeForm
     C,
 
 }
-[CreateAssetMenu(fileName = "FormsDataSO", menuName = "ApocalypseMorphosis/Forms/FormsDataSO")]
+[CreateAssetMenu(fileName = "FormsDataSO", menuName = "ApocalypseMorphosis/FormsDataSO")]
 public class FormsDataSO : ScriptableObject
 {
     public string Name;
     public ulong ID;
 
     public RangeForm rangeForm;
+
     public int Health;
     public int Damage;
     public int Armor;
-    public bool BuffIsActive;
-
-    public float Speed;
+    public float SpeedMovement;
+    public float SpeedAttack;
 
     public float Skill1Cost;
     public float Skill2Cost;

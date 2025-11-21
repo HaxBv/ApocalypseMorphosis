@@ -1,42 +1,34 @@
 using System;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputs : MonoBehaviour , IAbilities, IRechargeAbility
+public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
 {
 
-    public FormsDataSO data;
+
+
+    public FormsDataSO Formdata;
 
     public Rigidbody2D rb;
     public InputSystem_Actions input;
 
-    private float CurrentSpeed;
-
     
-
-    public int Level = 1;
-    private int LevelMax;
-
-    public int ExpActual;
-    private int ExpMax;
-    private int ExpToLevelUp;
+    protected PlayerStats stats;
 
 
 
-    private int EnergyMax;
-    private int EnergyMin;
-    public int Energyactual;
 
-    private int RegenerationEnergy;
-    private int RegenerationHP;
-    private int RegenerationControlHP;
+
+
+
 
     private int ControlMax;
     public int ControlActual;
     private int ControlMin;
 
-    public float Cooldown;
+    
     public Vector2 moveInput;
 
 
@@ -47,12 +39,8 @@ public class PlayerInputs : MonoBehaviour , IAbilities, IRechargeAbility
     private void Awake()
     {
         input = new();
-        CurrentSpeed = data.Speed;
         rb = GetComponent<Rigidbody2D>();
-
-
-
-
+        stats = GetComponent<PlayerStats>();
 
 
     }
@@ -72,7 +60,7 @@ public class PlayerInputs : MonoBehaviour , IAbilities, IRechargeAbility
     }
     private void OnSkill1(InputAction.CallbackContext context)
     {
-        Ability1();    
+        Ability1();
 
     }
     private void OnSkill2(InputAction.CallbackContext context)
@@ -85,8 +73,8 @@ public class PlayerInputs : MonoBehaviour , IAbilities, IRechargeAbility
         Definitiva();
     }
 
-    
-    
+
+
 
     private void OnDisable()
     {
@@ -107,21 +95,21 @@ public class PlayerInputs : MonoBehaviour , IAbilities, IRechargeAbility
     }
     void Start()
     {
-        
+
     }
 
 
     void Update()
     {
-       
+
 
 
     }
     public void MovementMechanic()
-
     {
-        rb.linearVelocity = moveInput * CurrentSpeed;
+        rb.linearVelocity = moveInput * stats.currentSpeedMovement;
     }
+
     /*public virtual void Pasive()
     {
         int regenerationHp = 2;

@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 3190207813654514489}
   - component: {fileID: 5857794164515529193}
   - component: {fileID: 7336411660245354922}
+  - component: {fileID: 5199324582283339966}
   - component: {fileID: 6227971238268072581}
+  - component: {fileID: 6226943733223058429}
   m_Layer: 0
   m_Name: Zero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,18 +103,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62317e18edcfafd41943a86f06c97937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
+  Formdata: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
   rb: {fileID: 0}
-  Level: 1
-  ExpActual: 0
-  Energyactual: 0
   ControlActual: 0
-  Cooldown: 0
   moveInput: {x: 0, y: 0}
-  circuloPrefab: {fileID: 3694464459483174546, guid: 4ee29a984c91ea344b140cf6a91f8004, type: 3}
-  RayoLazerPrefab: {fileID: 6737086149380483000, guid: eff1b2ffbf0b78e43925e3fac3869cd6, type: 3}
+  Skill1: {fileID: 11400000, guid: 4a448dabd22e71640b8e5ca34f5a815b, type: 2}
+  Skill2: {fileID: 11400000, guid: 52ccc2aab05b679458fcbf499fd1b989, type: 2}
+  Ult: {fileID: 11400000, guid: 31da17c2807ae3f4284517eb7fbd121c, type: 2}
   RangeLazer: 0.2
   player: {fileID: 3190207813654514489}
+--- !u!114 &5199324582283339966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743318922666756890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2a1cc938bbe954e9ae38f6ad60073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseFormData: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
+  currentHealth: 0
+  currentDamage: 0
+  currentArmor: 0
+  currentSpeedMovement: 0
+  currentSpeedAttack: 0
+  HealthPerLevel: 10
+  DamagePerLevel: 1
+  ArmorPerLevel: 2
+  SpeedMovementPerLevel: 0.15
+  SpeedAttackPerLevel: 2
+  buffDamage: 0
+  buffArmor: 0
+  buffSpeedMovement: 0
+  buffSpeedAttack: 0
 --- !u!50 &6227971238268072581
 Rigidbody2D:
   serializedVersion: 5
@@ -140,3 +166,49 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &6226943733223058429
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743318922666756890}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 11.2699995, y: 21.022104}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 11.2699995, y: 21.022104}
+  m_EdgeRadius: 0

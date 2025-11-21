@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: d650f197957f66a4d96246d9d7207f3b
+guid: 5ac65bddc4e65624fb4b98d58771b790
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 411260201565831632
-    second: Salud 2_0
-  - first:
-      213: 4101843110971080773
-    second: Salud 2_1
+      213: -4223302202363257489
+    second: Xp barra_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Salud 2_0
+      name: Xp barra_0
       rect:
         serializedVersion: 2
-        x: 329
-        y: 442
-        width: 622
-        height: 314
+        x: 454
+        y: 639
+        width: 372
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d1469079f615b500800000000000000
-      internalID: 411260201565831632
+      spriteID: f6d5301e501d365c0800000000000000
+      internalID: -4223302202363257489
       vertices: []
       indices: 
       edges: []
@@ -141,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2bddb4147556402499f00ddfbabaf4c4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -151,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Salud 2_0: 411260201565831632
-      Salud 2_1: 4101843110971080773
+      Xp barra_0: -4223302202363257489
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

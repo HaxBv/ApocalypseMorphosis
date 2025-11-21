@@ -4,12 +4,12 @@ using UnityEngine.Rendering;
 
 public class Shadow : PlayerInputs, IDamagable, IAtacar
 {
-    public GameObject DagasPrefab;
-    public GameObject SlashPrefab;
-    public GameObject RafagaPrefab;
-
-
     
+
+    public SkillsDataSO Skill1;
+    public SkillsDataSO Skill2;
+    public SkillsDataSO Ult;
+
 
     public float RangeDagas;
     public float SplitDagas;
@@ -33,9 +33,9 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
         Sprite = GetComponent<SpriteRenderer>();
 
 
-        CurrentSkill1Cost = data.Skill1Cost;
-        CurrentSkill2Cost = data.Skill2Cost;
-        CurrentDefinitivaCost = data.DefinitivaCost;
+        CurrentSkill1Cost = Formdata.Skill1Cost;
+        CurrentSkill2Cost = Formdata.Skill2Cost;
+        CurrentDefinitivaCost = Formdata.DefinitivaCost;
 
         
 
@@ -57,12 +57,12 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
     }
     public override void Ability1()
     {
-        if(data.RecargaActualSkill1 >= data.TiempoMaximoRecarga1)
+        if(Formdata.RecargaActualSkill1 >= Formdata.TiempoMaximoRecarga1)
         {
             
             if (GameManager.Instance.EnergiaActual >= CurrentSkill1Cost)
             {
-                data.RecargaActualSkill1 = 0;
+                Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
                 print("Energia Actual: " + GameManager.Instance.EnergiaActual);
                 // Posición del mouse en mundo
@@ -113,11 +113,11 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
     public override void Ability2()
     {
 
-        if (data.RecargaActualSkill2 >= data.TiempoMaximoRecarga2)
+        if (Formdata.RecargaActualSkill2 >= Formdata.TiempoMaximoRecarga2)
         {
             if (GameManager.Instance.EnergiaActual >= CurrentSkill2Cost)
             {
-                data.RecargaActualSkill2 = 0;
+                Formdata.RecargaActualSkill2 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
                 print("Energia Actual: " + GameManager.Instance.EnergiaActual);
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -128,7 +128,7 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
                 if (player != null)
                 {
                     Debug.Log("Teletransportación");
-                    Instantiate(SlashPrefab, player.position, Quaternion.identity);
+                    Instantiate(Skill2.prefab, player.position, Quaternion.identity);
                 }
                 else
                 {
@@ -147,11 +147,11 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
 
     public override void Definitiva()
     {
-        if (data.RecargaActualDefinitiva >= data.TiempoMaximoDefinitiva)
+        if (Formdata.RecargaActualDefinitiva >= Formdata.TiempoMaximoDefinitiva)
         {
             if (GameManager.Instance.EnergiaActual >= CurrentDefinitivaCost)
             {
-                data.RecargaActualDefinitiva = 0;
+                Formdata.RecargaActualDefinitiva = 0;
                 if (player != null)
 
                 {
@@ -192,7 +192,7 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
         {
 
             Quaternion rotacion = Quaternion.Euler(0f, 0f, rot);
-            Instantiate(RafagaPrefab, player.position, rotacion);
+            Instantiate(Ult.prefab, player.position, rotacion);
             yield return new WaitForSeconds(SpeedRafaga);
         }
     }
@@ -207,7 +207,7 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
 
     void CrearDaga(Vector3 posicion, Vector2 direccion)
     {
-        GameObject daga = Instantiate(DagasPrefab, posicion, Quaternion.identity);
+        GameObject daga = Instantiate(Skill1.prefab, posicion, Quaternion.identity);
         Dagas proyectil = daga.GetComponent<Dagas>();
 
         if (proyectil != null)
@@ -244,17 +244,17 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
     }
     public override void Recharge()
     {
-        if (data.RecargaActualSkill1 < data.TiempoMaximoRecarga1)
+        if (Formdata.RecargaActualSkill1 < Formdata.TiempoMaximoRecarga1)
         {
-            data.RecargaActualSkill1 += Time.deltaTime;
+            Formdata.RecargaActualSkill1 += Time.deltaTime;
         }
-        if (data.RecargaActualSkill2 < data.TiempoMaximoRecarga2)
+        if (Formdata.RecargaActualSkill2 < Formdata.TiempoMaximoRecarga2)
         {
-            data.RecargaActualSkill2 += Time.deltaTime;
+            Formdata.RecargaActualSkill2 += Time.deltaTime;
         }
-        if (data.RecargaActualDefinitiva < data.TiempoMaximoDefinitiva)
+        if (Formdata.RecargaActualDefinitiva < Formdata.TiempoMaximoDefinitiva)
         {
-            data.RecargaActualDefinitiva += Time.deltaTime;
+            Formdata.RecargaActualDefinitiva += Time.deltaTime;
         }
     }
 }

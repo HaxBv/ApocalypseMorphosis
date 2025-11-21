@@ -8,7 +8,7 @@ public enum DisasterLevelEnemy
     Dragon,
     God
 }
-[CreateAssetMenu(fileName = "EnemyDataSO", menuName = "ApocalypseMorphosis/Enemies/EnemyDataSO")]
+[CreateAssetMenu(fileName = "EnemyDataSO", menuName = "ApocalypseMorphosis/EnemyDataSO")]
 
 public class EnemyDataSO : ScriptableObject
 {

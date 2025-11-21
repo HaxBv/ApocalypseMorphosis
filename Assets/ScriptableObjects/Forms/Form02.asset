@@ -18,8 +18,8 @@ MonoBehaviour:
   Health: 225
   Damage: 2
   Armor: 10
-  BuffIsActive: 0
-  Speed: 3.5
+  SpeedMovement: 2.5
+  SpeedAttack: 0
   Skill1Cost: 10
   Skill2Cost: 5
   DefinitivaCost: 25
