@@ -5,6 +5,7 @@ public class PlayerStats : MonoBehaviour
     public FormsDataSO baseFormData;
 
     public int currentHealth;
+    public int maxHealth;
     public int currentDamage;
     public int currentArmor;
     public float currentSpeedMovement;
@@ -21,10 +22,15 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public float buffSpeedMovement;
     [HideInInspector] public float buffSpeedAttack;
 
+    public int FormIndex;
 
     private void OnEnable()
     {
-        AplicarStatsBase();
+        maxHealth = baseFormData.Health;
+        AplicarMejorasPorNivel();
+        AplicarBaseStats();
+        
+
         PlayerLevelSystem.Instance.OnLevelUp += AplicarMejorasPorNivel;
     }
 
@@ -33,10 +39,13 @@ public class PlayerStats : MonoBehaviour
         PlayerLevelSystem.Instance.OnLevelUp -= AplicarMejorasPorNivel;
     }
 
-    private void AplicarStatsBase()
+    public void AplicarBaseStats()
     {
+        if (baseFormData == null) return;
 
-        currentHealth = baseFormData.Health;
+        maxHealth = baseFormData.Health;
+        currentHealth = maxHealth;
+
         currentDamage = baseFormData.Damage;
         currentArmor = baseFormData.Armor;
         currentSpeedMovement = baseFormData.SpeedMovement;
@@ -47,10 +56,28 @@ public class PlayerStats : MonoBehaviour
     {
         int nivel = PlayerLevelSystem.Instance.Level - 1;
 
-        currentHealth = baseFormData.Health + (nivel * HealthPerLevel);
+        int oldMax = maxHealth;
+        maxHealth = baseFormData.Health + (nivel * HealthPerLevel);
+
+        // Mantener la vida proporcional si quieres
+        float porcentajeVida = (float)currentHealth / oldMax;
+        currentHealth = Mathf.RoundToInt(porcentajeVida * maxHealth);
+
         currentDamage = baseFormData.Damage + (nivel * DamagePerLevel) + buffDamage;
         currentArmor = baseFormData.Armor + (nivel * ArmorPerLevel) + buffArmor;
         currentSpeedMovement = baseFormData.SpeedMovement + (nivel * SpeedMovementPerLevel) + buffSpeedMovement;
         currentSpeedAttack = baseFormData.SpeedAttack + (nivel * SpeedAttackPerLevel) + buffSpeedAttack;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth < 0) currentHealth = 0;
+    }
+
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 }

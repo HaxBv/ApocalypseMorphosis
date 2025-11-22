@@ -11,7 +11,8 @@ public interface IInteractuable
 
 public interface IAtacar
 {
-    void Atacar(GameObject Target);
+    void Atacar();
+    void AttackCooldown();
 }
 
 public interface IAbilities

@@ -19,7 +19,7 @@ MonoBehaviour:
   Damage: 10
   Armor: 0
   SpeedMovement: 3
-  SpeedAttack: 0
+  SpeedAttack: 0.5
   Skill1Cost: 0
   Skill2Cost: 0
   DefinitivaCost: 0

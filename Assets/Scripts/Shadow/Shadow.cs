@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Shadow : PlayerInputs, IDamagable, IAtacar
+public class Shadow : PlayerInputs, IDamagable
 {
     
 
@@ -25,8 +25,9 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
     private float CurrentSkill2Cost;
     private float CurrentDefinitivaCost;
 
-
-    
+    private float attackCooldown = 0f;
+    public float RangeAttack;
+    public GameObject Ataque;
 
     void Start()
     {
@@ -48,7 +49,7 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
     {
         MovementMechanic();
         Recharge();
-
+        AttackCooldown();
     }
     public override void Passive()
     {
@@ -107,6 +108,21 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
             v.x * sin + v.y * cos
         );
     }
+    void CrearDaga(Vector3 posicion, Vector2 direccion)
+    {
+        GameObject daga = Instantiate(Skill1.prefab, posicion, Quaternion.identity);
+        Dagas proyectil = daga.GetComponent<Dagas>();
+
+        if (proyectil != null)
+        {
+            proyectil.Lanzar(direccion);
+
+            // Simplemente rotar usando Atan2
+            daga.transform.up = direccion; // La cara “arriba” del sprite apunta al movimiento
+        }
+    }
+
+
 
 
 
@@ -197,7 +213,25 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
         }
     }
 
+    public override void AttackCooldown()
+    {
+        if (attackCooldown > 0)
+            attackCooldown -= Time.deltaTime;
+    }
+    public override void Atacar()
+    {
+        if (attackCooldown > 0f)
+            return;
+        
+        float direccion = Mathf.Sign(transform.localScale.x);
+        Vector3 posicionFrente = transform.position + new Vector3(RangeAttack * direccion, 0, 0);
 
+        Instantiate(Ataque, posicionFrente, Quaternion.identity);
+        
+        
+
+        attackCooldown = 1f / stats.currentSpeedAttack;
+    }
 
     public override void OutOfControl()
     {
@@ -205,17 +239,7 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
     }
 
 
-    void CrearDaga(Vector3 posicion, Vector2 direccion)
-    {
-        GameObject daga = Instantiate(Skill1.prefab, posicion, Quaternion.identity);
-        Dagas proyectil = daga.GetComponent<Dagas>();
-
-        if (proyectil != null)
-        {
-            proyectil.Lanzar(direccion);
-        }
-    }
-
+    
     /*private void SetMoveAnimation(Vector2 vector)
     {
         print(vector);
@@ -238,10 +262,6 @@ public class Shadow : PlayerInputs, IDamagable, IAtacar
 
     }
 
-    public void Atacar(GameObject Target)
-    {
-        throw new System.NotImplementedException();
-    }
     public override void Recharge()
     {
         if (Formdata.RecargaActualSkill1 < Formdata.TiempoMaximoRecarga1)

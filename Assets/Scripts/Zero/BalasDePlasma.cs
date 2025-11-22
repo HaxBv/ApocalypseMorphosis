@@ -1,8 +1,9 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-
-public class Dagas : MonoBehaviour
+public class BalasDePlasma : MonoBehaviour
 {
+
     public float speed;
     public float lifetime;
 
@@ -26,6 +27,6 @@ public class Dagas : MonoBehaviour
 
     public void Lanzar(Vector2 dir)
     {
-        direccion = dir.normalized; 
+        direccion = dir.normalized;
     }
 }

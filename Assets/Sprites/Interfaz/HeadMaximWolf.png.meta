@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a1080cf739f63db41b5a4cecea040940
+guid: d2610bf94c07b9149b5c4992306b2eca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4433095794605590535
-    second: Barra Control Llena_0
-  - first:
-      213: 6681460457154182903
-    second: Barra Control Llena_1
+      213: 5151575505832912668
+    second: HeadMaximWolf_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Barra Control Llena_1
+      name: HeadMaximWolf_0
       rect:
         serializedVersion: 2
-        x: 197
-        y: 710
-        width: 935
-        height: 143
+        x: 759
+        y: 719
+        width: 257
+        height: 232
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7fe7e79c2e059bc50800000000000000
-      internalID: 6681460457154182903
+      spriteID: c1726cad0a21e7740800000000000000
+      internalID: 5151575505832912668
       vertices: []
       indices: 
       edges: []
@@ -141,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 77b3d6920fcafe747b99878cb578aeec
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -151,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Barra Control Llena_0: -4433095794605590535
-      Barra Control Llena_1: 6681460457154182903
+      HeadMaximWolf_0: 5151575505832912668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

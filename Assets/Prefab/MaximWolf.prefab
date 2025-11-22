@@ -138,6 +138,8 @@ MonoBehaviour:
   RageMax: 100
   RageGained: 2
   player: {fileID: 129925144375400192}
+  RangeAttack: 1.3
+  Ataque: {fileID: 5691628477351632451, guid: 13ee7f664d7454c45b51a0077dda7e33, type: 3}
 --- !u!114 &798220881215819579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,20 +153,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseFormData: {fileID: 11400000, guid: 0cba968b08adf024a900c15d61d7b1bb, type: 2}
-  currentHealth: 0
+  currentHealth: 175
+  maxHealth: 0
   currentDamage: 0
   currentArmor: 0
   currentSpeedMovement: 0
   currentSpeedAttack: 0
-  HealthPerLevel: 0
-  DamagePerLevel: 0
+  HealthPerLevel: 10
+  DamagePerLevel: 3
   ArmorPerLevel: 0
   SpeedMovementPerLevel: 0.25
-  SpeedAttackPerLevel: 0
+  SpeedAttackPerLevel: 0.2
   buffDamage: 0
   buffArmor: 0
   buffSpeedMovement: 0
   buffSpeedAttack: 0
+  FormIndex: 3
 --- !u!50 &2844914591285120673
 Rigidbody2D:
   serializedVersion: 5
@@ -191,7 +195,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3130252342284860055
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class InkMan : PlayerInputs, IDamagable, IAtacar
+public class InkMan : PlayerInputs, IDamagable
 {
     private float recargaEnergia = 10f;
+
+    private float attackCooldown = 0;
+
+    public float RangeAttack;
+
+    public GameObject Ataque;
     void Start()
     {
        
@@ -13,6 +19,7 @@ public class InkMan : PlayerInputs, IDamagable, IAtacar
     {
         Passive();
         MovementMechanic();
+        AttackCooldown();
     }
     public override void Passive()
     {
@@ -21,38 +28,42 @@ public class InkMan : PlayerInputs, IDamagable, IAtacar
     
     public override void Ability1()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ability1");
     }
-
-
-
-
-
 
 
     public override void Ability2()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ability2");
 
     }
 
     public override void Definitiva()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ultimate");
 
 
     }
 
-   
-
-
-    public override void OutOfControl()
+    public override void AttackCooldown()
     {
-        Debug.Log("Perdiste el control");
+        if (attackCooldown > 0)
+            attackCooldown -= Time.deltaTime;
     }
+    public override void Atacar()
+    {
+        if (attackCooldown > 0f)
+            return;
+
+        float direccion = Mathf.Sign(transform.localScale.x);
+        Vector3 posicionFrente = transform.position + new Vector3(RangeAttack * direccion, 0, 0);
+
+        Instantiate(Ataque, posicionFrente, Quaternion.identity);
+        Debug.Log("Ataco");
 
 
-   
+        attackCooldown = 1f / stats.currentSpeedAttack;
+    }
 
     /*private void SetMoveAnimation(Vector2 vector)
     {
@@ -76,8 +87,5 @@ public class InkMan : PlayerInputs, IDamagable, IAtacar
 
     }
 
-    public void Atacar(GameObject Target)
-    {
-        throw new System.NotImplementedException();
-    }
+   
 }

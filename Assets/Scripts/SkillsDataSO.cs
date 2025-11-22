@@ -18,6 +18,7 @@ public class SkillsDataSO : ScriptableObject
     public float baseDamage;
     public float baseSpeed;
     public float baseLifetime;
+    [Header("Projectile Upgrade Per Level")]
     public float damagePerLevel;
     public float speedPerLevel;
     public float lifetimePerLevel;
@@ -29,4 +30,10 @@ public class SkillsDataSO : ScriptableObject
     public float bonusSpeed;
     public float bonusAttackSpeed;
     public float duration;
+    [Header("Buffos Upgrade Per Level")]
+    public float bonusDamagePerLevel;
+    public float bonusArmorPerLevel;
+    public float bonusSpeedPerLevel;
+    public float bonusAttackSpeedPerLevel;
+    public float durationPerLevel;
 }

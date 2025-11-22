@@ -116,6 +116,8 @@ MonoBehaviour:
   StartToRafaga: 1
   player: {fileID: 4717735279572509585}
   Sprite: {fileID: 5399121669488187297}
+  RangeAttack: 1
+  Ataque: {fileID: 7324410234854373179, guid: 3aa262bbf94c78a44a3bb2482e847b4e, type: 3}
 --- !u!114 &9024364962882120955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,20 +131,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseFormData: {fileID: 11400000, guid: 47b99f1effb8f4047b3839c3b0453441, type: 2}
-  currentHealth: 0
+  currentHealth: 125
+  maxHealth: 0
   currentDamage: 0
   currentArmor: 0
   currentSpeedMovement: 0
   currentSpeedAttack: 0
-  HealthPerLevel: 0
-  DamagePerLevel: 0
+  HealthPerLevel: 5
+  DamagePerLevel: 10
   ArmorPerLevel: 0
   SpeedMovementPerLevel: 0.25
-  SpeedAttackPerLevel: 0
+  SpeedAttackPerLevel: 0.3
   buffDamage: 0
   buffArmor: 0
   buffSpeedMovement: 0
   buffSpeedAttack: 0
+  FormIndex: 1
 --- !u!50 &6253634090002897028
 Rigidbody2D:
   serializedVersion: 5
@@ -169,7 +173,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3807937052002728386
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaeb356a96545244f98045fcb46fb8a3, type: 3}
-  m_Name: Unleashed
+  m_Name: Golpe
   m_EditorClassIdentifier: 
-  owner: MaximWolf
-  tipo: 1
+  owner: 
+  tipo: 0
   baseDamage: 0
   baseSpeed: 0
   baseLifetime: 0
@@ -21,11 +21,11 @@ MonoBehaviour:
   speedPerLevel: 0
   lifetimePerLevel: 0
   prefab: {fileID: 0}
-  bonusDamage: 10
+  bonusDamage: 0
   bonusArmor: 0
-  bonusSpeed: 1
-  bonusAttackSpeed: 3
-  duration: 15
+  bonusSpeed: 0
+  bonusAttackSpeed: 0
+  duration: 0
   bonusDamagePerLevel: 0
   bonusArmorPerLevel: 0
   bonusSpeedPerLevel: 0

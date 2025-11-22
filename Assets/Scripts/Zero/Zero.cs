@@ -3,12 +3,21 @@ using System.Collections;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class Zero : PlayerInputs, IDamagable, IAtacar
+public class Zero : PlayerInputs, IDamagable
 {
+
+
     public SkillsDataSO Skill1;
     public SkillsDataSO Skill2;
     public SkillsDataSO Ult;
-    
+
+
+    public BalasDePlasma Plasma;
+
+
+
+    public float RangeDisparo;
+
 
 
     public float RangeLazer = 2f;
@@ -22,6 +31,8 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
     private Coroutine buffCoroutine;
 
 
+    private float attackCooldown = 0f;
+
     void Start()
     {
         
@@ -34,7 +45,7 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
     {
         MovementMechanic();
         Recharge();
-
+        AttackCooldown();
     }
     public override void Ability1()
     {
@@ -172,11 +183,26 @@ public class Zero : PlayerInputs, IDamagable, IAtacar
 
 
     }
-
-    public void Atacar(GameObject Target)
+    public override void AttackCooldown()
     {
-        throw new System.NotImplementedException();
+        if (attackCooldown > 0)
+            attackCooldown -= Time.deltaTime;
     }
+    public override void Atacar()
+    {
+        if (attackCooldown > 0f)
+            return;
+        Debug.Log("¡Ataco!");
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); mousePos.z = 0f;
+        Vector2 direccion = (mousePos - transform.position).normalized;
+        Vector3 origen = transform.position + (Vector3)direccion * RangeDisparo;
+
+        BalasDePlasma bala = Instantiate(Plasma, origen, Quaternion.identity);
+        bala.Lanzar(direccion);
+
+        attackCooldown = 1f / stats.currentSpeedAttack;
+    }
+
 
     public override void OutOfControl()
     {

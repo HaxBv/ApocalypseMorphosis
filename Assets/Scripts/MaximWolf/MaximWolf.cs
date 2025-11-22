@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
-public class MaximWolf : PlayerInputs, IDamagable, IAtacar
+public class MaximWolf : PlayerInputs, IDamagable
 {
     public SkillsDataSO Skill1;
     public SkillsDataSO Skill2;
@@ -28,6 +28,11 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
     private float CurrentSkill2Cost;
     private float CurrentDefinitivaCost;
 
+    private float attackCooldown = 0f;
+
+    public float RangeAttack;
+    public GameObject Ataque;
+
     void Start()
     {
         CurrentSkill1Cost = Formdata.Skill1Cost;
@@ -42,6 +47,7 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
 
         MovementMechanic();
         Recharge();
+        AttackCooldown();
 
     }
 
@@ -162,6 +168,26 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
         Debug.Log("BUFF terminado");
     }
 
+    public override void AttackCooldown()
+    {
+        if (attackCooldown > 0)
+            attackCooldown -= Time.deltaTime;
+    }
+    public override void Atacar()
+    {
+        if (attackCooldown > 0f)
+            return;
+
+        float direccion = Mathf.Sign(transform.localScale.x);
+        Vector3 posicionFrente = transform.position + new Vector3(RangeAttack * direccion, 0, 0);
+
+        Instantiate(Ataque, posicionFrente, Quaternion.identity);
+
+
+
+        attackCooldown = 1f / stats.currentSpeedAttack;
+    }
+
     public override void OutOfControl()
     {
         Debug.Log("Perdiste el control");
@@ -182,21 +208,7 @@ public class MaximWolf : PlayerInputs, IDamagable, IAtacar
         }*/
 
     }
-    public void Atacar(GameObject target)
-    {
-        /*IDamagable receptor = target.GetComponent<IDamagable>();
-
-        if (receptor != null)
-        {
-            receptor.TakeDamage(AtkActual);
-            if (HpActual > 0)
-            {
-                Passive();
-            }
-        }*/
-
-
-    }
+    
     public override void Recharge()
     {
         if (Formdata.RecargaActualSkill1 < Formdata.TiempoMaximoRecarga1)

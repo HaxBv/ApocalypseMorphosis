@@ -19,7 +19,7 @@ public class BarraEnergia : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            float porcentaje = GameManager.Instance.EnergiaActual / GameManager.Instance.EnergiaMaxima;
+            float porcentaje = GameManager.Instance.EnergiaActual / GameManager.Instance.EnergiaMax;
             rellenoBarraEnergia.fillAmount = porcentaje;
         }
     }

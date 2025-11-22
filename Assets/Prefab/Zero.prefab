@@ -110,6 +110,8 @@ MonoBehaviour:
   Skill1: {fileID: 11400000, guid: 4a448dabd22e71640b8e5ca34f5a815b, type: 2}
   Skill2: {fileID: 11400000, guid: 52ccc2aab05b679458fcbf499fd1b989, type: 2}
   Ult: {fileID: 11400000, guid: 31da17c2807ae3f4284517eb7fbd121c, type: 2}
+  Plasma: {fileID: 2764007588307740393, guid: 9963d99ad9ea6a94e945a0cee6b0edae, type: 3}
+  RangeDisparo: 1
   RangeLazer: 0.2
   player: {fileID: 3190207813654514489}
 --- !u!114 &5199324582283339966
@@ -125,7 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseFormData: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
-  currentHealth: 0
+  currentHealth: 225
+  maxHealth: 0
   currentDamage: 0
   currentArmor: 0
   currentSpeedMovement: 0
@@ -134,11 +137,12 @@ MonoBehaviour:
   DamagePerLevel: 1
   ArmorPerLevel: 2
   SpeedMovementPerLevel: 0.15
-  SpeedAttackPerLevel: 2
+  SpeedAttackPerLevel: 0.1
   buffDamage: 0
   buffArmor: 0
   buffSpeedMovement: 0
   buffSpeedAttack: 0
+  FormIndex: 2
 --- !u!50 &6227971238268072581
 Rigidbody2D:
   serializedVersion: 5
@@ -165,7 +169,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6226943733223058429
 BoxCollider2D:
   m_ObjectHideFlags: 0

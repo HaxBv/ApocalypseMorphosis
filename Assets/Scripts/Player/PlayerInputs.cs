@@ -4,7 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
+public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
 {
 
 
@@ -36,6 +36,8 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
     public Action<PlayerInputs> OnAbility2Trigger;
     public Action<PlayerInputs> OnDefinitivaTrigger;
 
+    public Action<PlayerInputs> OnAttackPerformed;
+
     private void Awake()
     {
         input = new();
@@ -52,24 +54,36 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
         input.Player.Move.canceled += OnMove;
         input.Player.Move.started += OnMove;
 
-        input.Player.Skill1.performed += OnSkill1;
+        input.Player.Attack.performed += OnAttack;
 
+        input.Player.Skill1.performed += OnSkill1;
         input.Player.Skill2.performed += OnSkill2;
         input.Player.Ultimate.performed += OnUltimate;
 
+
     }
+
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        if (GameManager.Instance.IsSelectingForm) return;
+        Atacar();
+    }
+
     private void OnSkill1(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsSelectingForm) return;
         Ability1();
 
     }
     private void OnSkill2(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsSelectingForm) return;
         Ability2();
     }
 
     private void OnUltimate(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsSelectingForm) return;
         Definitiva();
     }
 
@@ -78,11 +92,13 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
 
     private void OnDisable()
     {
-        input.Enable();
+        input.Disable();
 
         input.Player.Move.performed -= OnMove;
         input.Player.Move.canceled -= OnMove;
         input.Player.Move.started -= OnMove;
+
+        input.Player.Attack.performed -= OnAttack;
 
         input.Player.Skill1.performed -= OnSkill1;
         input.Player.Skill2.performed -= OnSkill2;
@@ -133,12 +149,12 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
 
     public virtual void Ability2()
     {
-        throw new NotImplementedException();
+        OnAbility2Trigger?.Invoke(this);
     }
 
     public virtual void Definitiva()
     {
-        throw new NotImplementedException();
+        OnDefinitivaTrigger?.Invoke(this);
     }
 
     public virtual void OutOfControl()
@@ -147,6 +163,16 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility
     }
 
     public virtual void Recharge()
+    {
+        throw new NotImplementedException();
+    }
+
+    public virtual void Atacar()
+    {
+        OnAttackPerformed?.Invoke(this);
+    }
+
+    public virtual void AttackCooldown()
     {
         throw new NotImplementedException();
     }
