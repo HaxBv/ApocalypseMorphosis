@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 4826ae7515c937547b3d1abd3e800661
+guid: 8522a0ef395465045816ecb82ddbef9f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 453164834555971795
-    second: New interfaz skills_0
+      213: -6567493806002655153
+    second: New interfaz skills 1_0
   - first:
-      213: -7203103180095050661
-    second: New interfaz skills_1
+      213: 2298978233055165252
+    second: New interfaz skills 1_1
   - first:
-      213: -3970242329595929233
-    second: New interfaz skills_2
+      213: 6461552837441555464
+    second: New interfaz skills 1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New interfaz skills_1
+      name: New interfaz skills 1_1
       rect:
         serializedVersion: 2
         x: 304
-        y: 431
+        y: 427
         width: 602
-        height: 579
+        height: 624
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5ca2f542df690c90800000000000000
-      internalID: -7203103180095050661
+      spriteID: 44bbb9fb58c97ef10800000000000000
+      internalID: 2298978233055165252
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cc2c7ec0e6ca7a940bf1ae78f2a49840
+    spriteID: db4475c80e648b745b349a351a64e420
     internalID: 0
     vertices: []
     indices: 
@@ -154,9 +154,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      New interfaz skills_0: 453164834555971795
-      New interfaz skills_1: -7203103180095050661
-      New interfaz skills_2: -3970242329595929233
+      New interfaz skills 1_0: -6567493806002655153
+      New interfaz skills 1_1: 2298978233055165252
+      New interfaz skills 1_2: 6461552837441555464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -23,9 +23,9 @@ MonoBehaviour:
   Skill1Cost: 10
   Skill2Cost: 5
   DefinitivaCost: 25
-  RecargaActualSkill1: 7
+  RecargaActualSkill1: 7.000808
   TiempoMaximoRecarga1: 7
   RecargaActualSkill2: 12
   TiempoMaximoRecarga2: 12
-  RecargaActualDefinitiva: 55
+  RecargaActualDefinitiva: 13.822739
   TiempoMaximoDefinitiva: 55

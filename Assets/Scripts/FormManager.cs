@@ -17,11 +17,11 @@ public class FormManager : MonoBehaviour
     public GameObject[] formPrefabs;
 
     [Header("Morph Settings")]
-    public float CurrentMorphCost;
+    public float MorphCost;
     public float maxMorphCooldown;
 
-    [HideInInspector]public float currentMorphCooldown;
-    private GameObject currentPlayer;
+    [HideInInspector] public float currentMorphCooldown;
+    [HideInInspector] public GameObject currentPlayer;
     private int currentFormIndex = 0;
 
     // Evento opcional para UI
@@ -31,6 +31,8 @@ public class FormManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+
     }
 
     private void Start()
@@ -54,17 +56,17 @@ public class FormManager : MonoBehaviour
     private IEnumerator BuffUltRoutine(float cooldownReduccion, float costReduccion, float duracion)
     {
         float originalCooldown = maxMorphCooldown;
-        float originalCost = CurrentMorphCost;
+        float originalCost = MorphCost;
 
         maxMorphCooldown -= cooldownReduccion;
-        CurrentMorphCost -= costReduccion;
+        MorphCost -= costReduccion;
 
-        Debug.Log($"BUFF Ult activado: cooldown {maxMorphCooldown}, cost {CurrentMorphCost} por {duracion} segundos");
+        Debug.Log($"BUFF Ult activado: cooldown {maxMorphCooldown}, cost {MorphCost} por {duracion} segundos");
 
         yield return new WaitForSeconds(duracion);
 
         maxMorphCooldown = originalCooldown;
-        CurrentMorphCost = originalCost;
+        MorphCost = originalCost;
 
         Debug.Log("BUFF Ult finalizado, cooldown y cost restaurados");
     }
@@ -91,7 +93,7 @@ public class FormManager : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.EnergiaActual < CurrentMorphCost)
+        if (GameManager.Instance.EnergiaActual < MorphCost)
         {
             Debug.Log("Energía insuficiente");
             return;
@@ -100,7 +102,7 @@ public class FormManager : MonoBehaviour
         
 
         // Usar energía
-        GameManager.Instance.UsarEnergia(CurrentMorphCost);
+        GameManager.Instance.UsarEnergia(MorphCost);
 
         // Guardar posición y rotación
         Vector3 pos = currentPlayer != null ? currentPlayer.transform.position : Vector3.zero;

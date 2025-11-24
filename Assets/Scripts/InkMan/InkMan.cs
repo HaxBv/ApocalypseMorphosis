@@ -26,7 +26,7 @@ public class InkMan : PlayerInputs, IDamagable
     {
 
         BuffMorphCD = FormManager.Instance.maxMorphCooldown - 0.1f;
-        BuffMorphCost = FormManager.Instance.CurrentMorphCost;
+        BuffMorphCost = FormManager.Instance.MorphCost;
         CurrentSkill1Cost = Formdata.Skill1Cost;
         CurrentSkill2Cost = Formdata.Skill2Cost;
         CurrentDefinitivaCost = Formdata.DefinitivaCost;

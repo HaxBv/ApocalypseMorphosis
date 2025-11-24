@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public float controlDrainRate;
 
     
-
+    
 
     public GameObject panelSeleccion;
 
@@ -31,8 +31,12 @@ public class GameManager : MonoBehaviour
 
     public bool IsSelectingForm = false;
 
+
+
     private void Awake()
     {
+
+
         input = new();
         if (Instance == null)
             Instance = this;
