@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Habilidad en cooldown");
             return;
         }
+        if (GameManager.Instance.EnergiaActual < FormManager.Instance.MorphCost)
+        {
+            Debug.Log("Energía insuficiente");
+            return;
+        }
         panelSeleccion.SetActive(true);
         IsSelectingForm = true;
     }

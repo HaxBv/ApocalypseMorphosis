@@ -74,7 +74,6 @@ public class FormManager : MonoBehaviour
     public void ChangeForm(int index)
     {
 
-        // Validaciones
         if (index < 0 || index >= formPrefabs.Length)
         {
             Debug.LogError("Índice de forma inválido");
@@ -93,18 +92,12 @@ public class FormManager : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.EnergiaActual < MorphCost)
-        {
-            Debug.Log("Energía insuficiente");
-            return;
-        }
+        
 
         
 
-        // Usar energía
         GameManager.Instance.UsarEnergia(MorphCost);
 
-        // Guardar posición y rotación
         Vector3 pos = currentPlayer != null ? currentPlayer.transform.position : Vector3.zero;
         Quaternion rot = currentPlayer != null ? currentPlayer.transform.rotation : Quaternion.identity;
 
