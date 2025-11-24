@@ -22,5 +22,5 @@ public class EnemyDataSO : ScriptableObject
 
     public float SpawnRate;
 
-    public Sprite sprite;
+    public GameObject prefab;
 }

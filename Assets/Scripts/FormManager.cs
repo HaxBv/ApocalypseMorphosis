@@ -109,6 +109,8 @@ public class FormManager : MonoBehaviour
         currentPlayer = Instantiate(formPrefabs[index], pos, rot);
         currentPlayer.tag = "Player";
 
+        NotifyEnemySpawnerAboutNewPlayer(currentPlayer);
+
         // Reset cooldown y actualizar índice
         currentMorphCooldown = 0f;
         currentFormIndex = index;
@@ -120,6 +122,22 @@ public class FormManager : MonoBehaviour
         
         UpdateAbilityUI();
     }
+    private void NotifyEnemySpawnerAboutNewPlayer(GameObject newPlayer)
+    {
+        EnemySpawner[] spawners = FindObjectsByType<EnemySpawner>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        foreach (var spawner in spawners)
+        {
+            spawner.UpdatePlayerReference(newPlayer.transform);
+        }
+
+        Debug.Log("EnemySpawner actualizado con el nuevo Player");
+    }
+
+
     private void UpdateAbilityUI()
     {
         for (int i = 0; i < formsAbilitiesUI.Length; i++)
