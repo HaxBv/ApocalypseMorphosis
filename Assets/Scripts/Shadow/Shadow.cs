@@ -42,7 +42,7 @@ public class Shadow : PlayerInputs, IDamagable
 
 
 
-}
+    }
 
 
     void Update()

@@ -130,6 +130,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   ControlActual: 0
   moveInput: {x: 0, y: 0}
+  Skill1: {fileID: 11400000, guid: c50166b9b901648419747cabe0a1e1ac, type: 2}
+  Skill2: {fileID: 11400000, guid: 8030769bf1041834fb3021bb170fdad9, type: 2}
+  Ult: {fileID: 11400000, guid: d22679337f099374fbbee9554c391945, type: 2}
   RangeAttack: 1
   Ataque: {fileID: 4945132832748218364, guid: 3bd64aaa7e5ea7e49b34895e1c29f958, type: 3}
 --- !u!114 &-3578237064267916691
@@ -146,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseFormData: {fileID: 11400000, guid: ac3651e8f8e746f49aaf85fa6ed4b1b7, type: 2}
   currentHealth: 0
+  maxHealth: 0
   currentDamage: 0
   currentArmor: 0
   currentSpeedMovement: 0
@@ -159,6 +163,7 @@ MonoBehaviour:
   buffArmor: 0
   buffSpeedMovement: 0
   buffSpeedAttack: 0
+  FormIndex: 0
 --- !u!50 &8725960857887258491
 Rigidbody2D:
   serializedVersion: 5

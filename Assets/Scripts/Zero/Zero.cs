@@ -92,7 +92,7 @@ public class Zero : PlayerInputs, IDamagable
 
     private IEnumerator AplicarBuff(SkillsDataSO skill)
     {
-        Debug.Log("Aplicando BUFF desde Skill2");
+        Debug.Log("Aplicando BUFF");
 
         // Si ya había un buff activo, se reinicia
         if (buffCoroutine != null)
