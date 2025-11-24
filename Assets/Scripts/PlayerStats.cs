@@ -26,13 +26,18 @@ public class PlayerStats : MonoBehaviour
 
     private void OnEnable()
     {
-        maxHealth = baseFormData.Health;
-        AplicarMejorasPorNivel();
-        AplicarBaseStats();
-        
+        if (baseFormData == null) return;
 
+        // Inicializar stats base solo una vez
+        AplicarBaseStats();
+
+        // Aplicar mejoras por nivel y buffs
+        AplicarMejorasPorNivel();
+
+        // Suscribirse al evento de subida de nivel
         PlayerLevelSystem.Instance.OnLevelUp += AplicarMejorasPorNivel;
     }
+
 
     private void OnDisable()
     {
@@ -59,7 +64,7 @@ public class PlayerStats : MonoBehaviour
         int oldMax = maxHealth;
         maxHealth = baseFormData.Health + (nivel * HealthPerLevel);
 
-        // Mantener la vida proporcional si quieres
+        
         float porcentajeVida = (float)currentHealth / oldMax;
         currentHealth = Mathf.RoundToInt(porcentajeVida * maxHealth);
 

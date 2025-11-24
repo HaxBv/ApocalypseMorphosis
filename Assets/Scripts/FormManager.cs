@@ -1,9 +1,16 @@
 using System;
 using UnityEngine;
-
+[System.Serializable]
+public class FormAbilitiesUI
+{
+    public GameObject[] Skill;
+}
 public class FormManager : MonoBehaviour
 {
     public static FormManager Instance;
+
+    [Header("UI de Habilidades por Forma")]
+    public FormAbilitiesUI[] formsAbilitiesUI;
 
     [Header("Prefabs de Formas")]
     public GameObject[] formPrefabs;
@@ -29,6 +36,7 @@ public class FormManager : MonoBehaviour
     {
         currentMorphCooldown = maxMorphCooldown;
         currentPlayer = GameObject.FindGameObjectWithTag("Player");
+        UpdateAbilityUI();
     }
 
     private void Update()
@@ -40,6 +48,7 @@ public class FormManager : MonoBehaviour
 
     public void ChangeForm(int index)
     {
+
         // Validaciones
         if (index < 0 || index >= formPrefabs.Length)
         {
@@ -90,9 +99,32 @@ public class FormManager : MonoBehaviour
         currentMorphCooldown = 0f;
         currentFormIndex = index;
 
-        // Notificar UI
-        OnPlayerChanged?.Invoke(currentPlayer);
+       
 
         Debug.Log("Transformado a forma: " + formPrefabs[index].name);
+
+        
+        UpdateAbilityUI();
+    }
+    private void UpdateAbilityUI()
+    {
+        for (int i = 0; i < formsAbilitiesUI.Length; i++)
+        {
+            bool isActiveForm = i == currentFormIndex;
+
+            if (formsAbilitiesUI[i].Skill != null)
+                SetActiveArray(formsAbilitiesUI[i].Skill, isActiveForm);
+
+            
+        }
+    }
+
+    private void SetActiveArray(GameObject[] objects, bool active)
+    {
+        foreach (var obj in objects)
+        {
+            if (obj != null)
+                obj.SetActive(active);
+        }
     }
 }

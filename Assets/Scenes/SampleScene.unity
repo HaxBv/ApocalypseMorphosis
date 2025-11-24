@@ -3996,6 +3996,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e882d4e2a543d418079f793680ff2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  formsAbilitiesUI:
+  - Skill:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - Skill:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - Skill:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - Skill: []
   formPrefabs:
   - {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
   - {fileID: 495114090315568333, guid: 437f225a526bdb048a25cfbefdef31e0, type: 3}
