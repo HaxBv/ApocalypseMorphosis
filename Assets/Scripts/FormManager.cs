@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 [System.Serializable]
 public class FormAbilitiesUI
 {
@@ -24,7 +25,7 @@ public class FormManager : MonoBehaviour
     private int currentFormIndex = 0;
 
     // Evento opcional para UI
-    public event Action<GameObject> OnPlayerChanged;
+    //public event Action<GameObject> OnPlayerChanged;
 
     private void Awake()
     {
@@ -44,6 +45,28 @@ public class FormManager : MonoBehaviour
         // Recargar cooldown
         if (currentMorphCooldown < maxMorphCooldown)
             currentMorphCooldown += Time.deltaTime;
+    }
+    public void AplicarBuffUlt(float cooldownReduccion, float costReduccion, float duracion)
+    {
+        StartCoroutine(BuffUltRoutine(cooldownReduccion, costReduccion, duracion));
+    }
+
+    private IEnumerator BuffUltRoutine(float cooldownReduccion, float costReduccion, float duracion)
+    {
+        float originalCooldown = maxMorphCooldown;
+        float originalCost = CurrentMorphCost;
+
+        maxMorphCooldown -= cooldownReduccion;
+        CurrentMorphCost -= costReduccion;
+
+        Debug.Log($"BUFF Ult activado: cooldown {maxMorphCooldown}, cost {CurrentMorphCost} por {duracion} segundos");
+
+        yield return new WaitForSeconds(duracion);
+
+        maxMorphCooldown = originalCooldown;
+        CurrentMorphCost = originalCost;
+
+        Debug.Log("BUFF Ult finalizado, cooldown y cost restaurados");
     }
 
     public void ChangeForm(int index)
@@ -74,11 +97,7 @@ public class FormManager : MonoBehaviour
             return;
         }
 
-        if (currentMorphCooldown < maxMorphCooldown)
-        {
-            Debug.Log("Habilidad en cooldown");
-            return;
-        }
+        
 
         // Usar energía
         GameManager.Instance.UsarEnergia(CurrentMorphCost);

@@ -18,19 +18,20 @@ public class InkMan : PlayerInputs, IDamagable
     private float CurrentSkill2Cost;
     private float CurrentDefinitivaCost;
 
-    private float BuffMorphCD = 4.5f;
+    private float BuffMorphCD;
+    private float BuffMorphCost;
     public GameObject Ataque;
 
     void Start()
     {
-        
 
-
+        BuffMorphCD = FormManager.Instance.maxMorphCooldown - 0.1f;
+        BuffMorphCost = FormManager.Instance.CurrentMorphCost;
         CurrentSkill1Cost = Formdata.Skill1Cost;
         CurrentSkill2Cost = Formdata.Skill2Cost;
         CurrentDefinitivaCost = Formdata.DefinitivaCost;
 
-
+        
 
 
 
@@ -41,6 +42,7 @@ public class InkMan : PlayerInputs, IDamagable
         Passive();
         MovementMechanic();
         AttackCooldown();
+        Recharge();
     }
     public override void Passive()
     {
@@ -63,53 +65,20 @@ public class InkMan : PlayerInputs, IDamagable
     {
         if (Formdata.RecargaActualDefinitiva >= Formdata.TiempoMaximoDefinitiva)
         {
-
             if (GameManager.Instance.EnergiaActual >= CurrentDefinitivaCost)
             {
                 Formdata.RecargaActualDefinitiva = 0;
                 GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
-                StartCoroutine(AplicarBuff(Ult));
 
+                // Calcular duración de la skill
+                float duracionUlt = Ult.duration;
+
+                // Aplicar buff directamente en FormManager
+                FormManager.Instance.AplicarBuffUlt(BuffMorphCD, BuffMorphCost, duracionUlt);
             }
-            else Debug.Log("Energia Insuficiente");
         }
-        else Debug.Log("Habilidad en Enfriamiento");
     }
 
-    private IEnumerator AplicarBuff(SkillsDataSO skill)
-    {
-        Debug.Log("Aplicando");
-
-        // Si ya había un buff activo, se reinicia
-        if (buffCoroutine != null)
-            StopCoroutine(buffCoroutine);
-
-        buffCoroutine = StartCoroutine(BuffRoutine(skill));
-        yield break;
-    }
-
-    private IEnumerator BuffRoutine(SkillsDataSO skill)
-    {
-        // Sumar al acumulador
-        
-        FormManager.Instance.maxMorphCooldown -= BuffMorphCD;
-
-        // Reaplicar stats actuales
-        stats.AplicarMejorasPorNivel();
-
-        Debug.Log($"BUFF aplicado por {skill.duration} segundos");
-
-        yield return new WaitForSeconds(skill.duration);
-
-        // Restar del acumulador
-        
-        FormManager.Instance.maxMorphCooldown += BuffMorphCD;
-
-        // Reaplicar stats actuales
-        stats.AplicarMejorasPorNivel();
-
-        Debug.Log("BUFF terminado");
-    }
 
     public override void AttackCooldown()
     {
@@ -152,6 +121,20 @@ public class InkMan : PlayerInputs, IDamagable
         throw new System.NotImplementedException();
 
     }
+    public override void Recharge()
+    {
+        if (Formdata.RecargaActualSkill1 < Formdata.TiempoMaximoRecarga1)
+        {
+            Formdata.RecargaActualSkill1 += Time.deltaTime;
+        }
+        if (Formdata.RecargaActualSkill2 < Formdata.TiempoMaximoRecarga2)
+        {
+            Formdata.RecargaActualSkill2 += Time.deltaTime;
+        }
+        if (Formdata.RecargaActualDefinitiva < Formdata.TiempoMaximoDefinitiva)
+        {
+            Formdata.RecargaActualDefinitiva += Time.deltaTime;
+        }
+    }
 
-   
 }
