@@ -40,11 +40,11 @@ public class UIManager : MonoBehaviour
         if (FormManager.Instance != null && FormManager.Instance.currentPlayer != null)
         {
             PlayerStats stats = FormManager.Instance.currentPlayer.GetComponent<PlayerStats>();
-            if (stats != null && stats.baseFormData != null)
+            if (stats != null)
             {
-                //int current = stats.baseFormData.CurrentHealth; // SO modificado directamente
-                int max = stats.maxHealth; // máximo de la forma
-                //healthText.text = $"{current}/{max}";
+                int current = stats.currentHealth; 
+                int max = stats.maxHealth; 
+                healthText.text = $"{current}/{max}";
             }
         }
     }
