@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
     public float controlRecoveryRate;
     public float controlDrainRate;
 
-    public float currentMorphCooldown = 0f; 
-    public float maxMorphCooldown;
+    
 
 
     public GameObject panelSeleccion;
@@ -57,6 +56,11 @@ public class GameManager : MonoBehaviour
     }
     private void OnSpaceDown(InputAction.CallbackContext context)
     {
+        if (FormManager.Instance.currentMorphCooldown < FormManager.Instance.maxMorphCooldown)
+        {
+            Debug.Log("Habilidad en cooldown");
+            return;
+        }
         panelSeleccion.SetActive(true);
         IsSelectingForm = true;
     }

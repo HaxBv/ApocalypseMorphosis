@@ -16,10 +16,10 @@ public class FormManager : MonoBehaviour
     public GameObject[] formPrefabs;
 
     [Header("Morph Settings")]
-    public float CurrentMorphCost = 10f;
-    public float maxMorphCooldown = 2f;
+    public float CurrentMorphCost;
+    public float maxMorphCooldown;
 
-    private float currentMorphCooldown;
+    [HideInInspector]public float currentMorphCooldown;
     private GameObject currentPlayer;
     private int currentFormIndex = 0;
 
