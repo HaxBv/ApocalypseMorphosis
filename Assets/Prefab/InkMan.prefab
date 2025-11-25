@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: -3578237064267916691}
   - component: {fileID: 8725960857887258491}
   - component: {fileID: -2935690449813675996}
+  - component: {fileID: 1494096298885799292}
+  - component: {fileID: 2886789948660343968}
+  - component: {fileID: 7682206648809391302}
   m_Layer: 0
   m_Name: InkMan
   m_TagString: Player
@@ -237,3 +240,47 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.86, y: 1.54}
   m_EdgeRadius: 0
+--- !u!114 &1494096298885799292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194097599692461605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391136fbe82b35d468087eb783201c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  sprite: {fileID: 0}
+  IsMoving: 0
+--- !u!114 &2886789948660343968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194097599692461605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5976f8adc917914c8666a69b69a138b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputManager: {fileID: 0}
+--- !u!114 &7682206648809391302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194097599692461605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7987fba1a96c791468b4051b29991541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Formdata: {fileID: 0}
+  rb: {fileID: 0}
+  ControlActual: 0
+  moveInput: {x: 0, y: 0}

@@ -7,6 +7,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class MaximWolf : PlayerInputs, IDamagable
 {
+    public PlayerAnimations Anim;
+
     public SkillsDataSO Skill1;
     public SkillsDataSO Skill2;
     public SkillsDataSO Ult;
@@ -66,8 +68,10 @@ public class MaximWolf : PlayerInputs, IDamagable
             {
                 Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
-                OnAbility1Trigger?.Invoke();
+                OnAbility1Trigger?.Invoke(this);
                 float direccion = Mathf.Sign(transform.localScale.x);
+
+               
                 Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
 
                 Instantiate(Skill1.prefab, posicionFrente, Quaternion.identity);
@@ -178,7 +182,7 @@ public class MaximWolf : PlayerInputs, IDamagable
     {
         if (attackCooldown > 0f)
             return;
-
+        OnAttackPerformed?.Invoke(this);
         float direccion = Mathf.Sign(transform.localScale.x);
         Vector3 posicionFrente = transform.position + new Vector3(RangeAttack * direccion, 0, 0);
 

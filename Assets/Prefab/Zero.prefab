@@ -14,6 +14,10 @@ GameObject:
   - component: {fileID: 5199324582283339966}
   - component: {fileID: 6227971238268072581}
   - component: {fileID: 6226943733223058429}
+  - component: {fileID: 6373093078977884389}
+  - component: {fileID: 9035618282097556513}
+  - component: {fileID: 5980584707255911758}
+  - component: {fileID: 8108875897739408214}
   m_Layer: 0
   m_Name: Zero
   m_TagString: Player
@@ -216,3 +220,69 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 11.2699995, y: 21.022104}
   m_EdgeRadius: 0
+--- !u!95 &6373093078977884389
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743318922666756890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9035618282097556513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743318922666756890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391136fbe82b35d468087eb783201c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  sprite: {fileID: 0}
+  IsMoving: 0
+--- !u!114 &5980584707255911758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743318922666756890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5976f8adc917914c8666a69b69a138b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputManager: {fileID: 0}
+--- !u!114 &8108875897739408214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743318922666756890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7987fba1a96c791468b4051b29991541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Formdata: {fileID: 0}
+  rb: {fileID: 0}
+  ControlActual: 0
+  moveInput: {x: 0, y: 0}

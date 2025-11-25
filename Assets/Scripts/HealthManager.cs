@@ -4,31 +4,37 @@ public class HealthManager : MonoBehaviour
 {
     public static HealthManager Instance;
 
-    /*private void Awake()
+    public int currentHealth;
+    public int maxHealth;
+
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
-    // Array que guarda la vida de cada forma por índice
-    private int[] formHealth;
-
-    public void Init(int totalForms)
+    public void InitHealth(int baseHealth)
     {
-        formHealth = new int[totalForms];
-        for (int i = 0; i < totalForms; i++)
-            formHealth[i] = 0; // -1 indica que nunca se ha instanciado
+        maxHealth = baseHealth;
+        currentHealth = maxHealth;
     }
 
-    public void SaveHealth(int formIndex, int currentHealth)
+    public void UpdateMaxHealth(int newMax)
     {
-        formHealth[formIndex] = currentHealth;
+        float percent = (float)currentHealth / maxHealth;
+        maxHealth = newMax;
+        currentHealth = Mathf.RoundToInt(maxHealth * percent);
     }
 
-    public int GetHealth(int formIndex, int baseHealth)
+    public void TakeDamage(int amount)
     {
-        if (formHealth[formIndex] < 0)
-            return baseHealth;
-        return formHealth[formIndex];
-    }*/
+        currentHealth -= amount;
+        if (currentHealth < 0) currentHealth = 0;
+    }
+
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+    }
 }
