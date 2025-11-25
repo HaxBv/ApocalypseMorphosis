@@ -73,8 +73,9 @@ public class Shadow : PlayerInputs, IDamagable
 
                 print("Energia Actual: " + GameManager.Instance.EnergiaActual);
                 // Posición del mouse en mundo
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos.z = 0f;
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.z = Camera.main.nearClipPlane + 1f;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                 // Dirección hacia el mouse
                 Vector2 dirBase = (mousePos - transform.position).normalized;
@@ -144,8 +145,9 @@ public class Shadow : PlayerInputs, IDamagable
                 OnAbility2Trigger?.Invoke(this);
 
                 print("Energia Actual: " + GameManager.Instance.EnergiaActual);
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos.z = 0;
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.z = Camera.main.nearClipPlane + 1f;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                 transform.position = mousePos;
 

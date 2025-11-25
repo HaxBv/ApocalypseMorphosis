@@ -60,9 +60,9 @@ public class Zero : PlayerInputs, IDamagable
                 Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
                 OnAbility1Trigger?.Invoke(this);
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos.z = 0;
-
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.z = Camera.main.nearClipPlane + 1f;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
 
                 Instantiate(Skill1.prefab, mousePos, Quaternion.identity);
@@ -159,8 +159,9 @@ public class Zero : PlayerInputs, IDamagable
                     GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
                     OnDefinitivaTrigger?.Invoke(this);
                     // Obtener la posición del mouse en coordenadas del mundo
-                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    mousePos.z = 0f;
+                    Vector3 mousePos = Input.mousePosition;
+                    mousePos.z = Camera.main.nearClipPlane + 1f;
+                    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                     // Calcular la dirección del mouse desde el jugador
                     float dirFrontal = Mathf.Sign(transform.localScale.x);
@@ -207,7 +208,10 @@ public class Zero : PlayerInputs, IDamagable
             return;
         Debug.Log("¡Ataco!");
         OnAttackPerformed?.Invoke(this);
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); mousePos.z = 0f;
+        
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane + 1f;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 direccion = (mousePos - transform.position).normalized;
         Vector3 origen = transform.position + (Vector3)direccion * RangeDisparo;
 
