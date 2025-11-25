@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class MaximWolf : PlayerInputs, IDamagable
 {
-    public PlayerAnimations Anim;
+   
 
     public SkillsDataSO Skill1;
     public SkillsDataSO Skill2;

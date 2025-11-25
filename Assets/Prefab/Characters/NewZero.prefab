@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4139405234876359007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2935690449813675996, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 11.2699995
+      objectReference: {fileID: 0}
+    - target: {fileID: -2935690449813675996, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 21.022104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886789948660343968, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: InputManager
+      value: 
+      objectReference: {fileID: 9000923958221110616}
+    - target: {fileID: 3275928187045116875, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_Name
+      value: NewZero
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650290606302376355, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2826493407183913623, guid: d954b82ec7d477240917a500e0574558, type: 3}
+    m_RemovedComponents:
+    - {fileID: -3578237064267916691, guid: e058892a686400d40b51914c54930463, type: 3}
+    - {fileID: 570694193591568219, guid: e058892a686400d40b51914c54930463, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9000923958221110616}
+    - targetCorrespondingSourceObject: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3250588667635631503}
+  m_SourcePrefab: {fileID: 100100000, guid: e058892a686400d40b51914c54930463, type: 3}
+--- !u!4 &518792132868918270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+  m_PrefabInstance: {fileID: 4139405234876359007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8171565050940782458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+  m_PrefabInstance: {fileID: 4139405234876359007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9000923958221110616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171565050940782458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62317e18edcfafd41943a86f06c97937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Formdata: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
+  rb: {fileID: 0}
+  moveInput: {x: 0, y: 0}
+  Skill1: {fileID: 11400000, guid: 4a448dabd22e71640b8e5ca34f5a815b, type: 2}
+  Skill2: {fileID: 11400000, guid: 52ccc2aab05b679458fcbf499fd1b989, type: 2}
+  Ult: {fileID: 11400000, guid: 31da17c2807ae3f4284517eb7fbd121c, type: 2}
+  Plasma: {fileID: -4234025327350503913, guid: 9963d99ad9ea6a94e945a0cee6b0edae, type: 3}
+  ControlPerdido: 0
+  RangeDisparo: 1
+  RangeLazer: 0.2
+  player: {fileID: 518792132868918270}
+--- !u!114 &-3250588667635631503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171565050940782458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2a1cc938bbe954e9ae38f6ad60073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseFormData: {fileID: 11400000, guid: 459b8bd0ea6ac08459bb55d71f35c776, type: 2}
+  currentHealth: 225
+  maxHealth: 0
+  currentDamage: 0
+  currentArmor: 0
+  currentSpeedMovement: 0
+  currentSpeedAttack: 0
+  HealthPerLevel: 10
+  DamagePerLevel: 1
+  ArmorPerLevel: 2
+  SpeedMovementPerLevel: 0.15
+  SpeedAttackPerLevel: 0.1
+  buffDamage: 0
+  buffArmor: 0
+  buffSpeedMovement: 0
+  buffSpeedAttack: 0
+  inDebuff: 0
+  FormIndex: 2

@@ -30,9 +30,7 @@ public class PlayerAnimations : MonoBehaviour
         PlayerController.Instance.
             InputManager.OnAbility1Trigger
             += SetSkill1Animation;
-        PlayerController.Instance.
-            InputManager.OnAbility1Trigger
-            += SetSkill1Animation;
+        
 
         /* PlayerController.Instance.
              InputManager.OnAbility2Trigger
@@ -46,6 +44,8 @@ public class PlayerAnimations : MonoBehaviour
 
     private void SetMoveAnimation(Vector2 vector)
     {
+
+        
         if( vector.x < 0)
         
              sprite.flipX = true;

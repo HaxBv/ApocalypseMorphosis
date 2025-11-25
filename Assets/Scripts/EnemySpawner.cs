@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 timers[i] = 0f;
                 SpawnEnemy(enemyTypes[i]);
-                Debug.Log("Aparecio un enemigo");
+                
             }
         }
     }

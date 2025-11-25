@@ -17,9 +17,8 @@ public class Shadow : PlayerInputs, IDamagable
     public float SpeedRafaga;
     public float StartToRafaga;
 
-    //public Animator Controller;
     public Transform player;
-    public SpriteRenderer Sprite;
+    
 
     private float CurrentSkill1Cost;
     private float CurrentSkill2Cost;
@@ -31,7 +30,7 @@ public class Shadow : PlayerInputs, IDamagable
 
     void Start()
     {
-        Sprite = GetComponent<SpriteRenderer>();
+       
 
 
         CurrentSkill1Cost = Formdata.Skill1Cost;

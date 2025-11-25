@@ -25,7 +25,8 @@ public class FormManager : MonoBehaviour
 
     [HideInInspector] public float currentMorphCooldown;
     [HideInInspector] public GameObject currentPlayer;
-    public int currentFormIndex { get; private set; } = 0;
+
+    public int currentFormIndex = 0;
 
     // Evento opcional para UI
     //public event Action<GameObject> OnPlayerChanged;
@@ -110,13 +111,13 @@ public class FormManager : MonoBehaviour
 
         // Instanciar nuevo prefab
         currentPlayer = Instantiate(formPrefabs[index], pos, rot);
+
         currentPlayer.tag = "Player";
 
        
         Camera.main.GetComponent<CameraTargetFollower>().UpdatePlayerReference(currentPlayer.transform);
         NotifyEnemySpawnerAboutNewPlayer(currentPlayer);
 
-        // Reset cooldown y actualizar índice
         currentMorphCooldown = 0f;
         currentFormIndex = index;
 

@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8135464284506052205
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2935690449813675996, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 12.803125
+      objectReference: {fileID: 0}
+    - target: {fileID: -2935690449813675996, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 12.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886789948660343968, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: InputManager
+      value: 
+      objectReference: {fileID: -259364159050138977}
+    - target: {fileID: 3275928187045116875, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c73aeff8f7f52694595a7fee2692f6e8, type: 2}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_Name
+      value: NewMaximWolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650290606302376355, guid: e058892a686400d40b51914c54930463, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7144191958065768282, guid: 9570cb91ca5011b48bf4d14678e0f94d, type: 3}
+    m_RemovedComponents:
+    - {fileID: -3578237064267916691, guid: e058892a686400d40b51914c54930463, type: 3}
+    - {fileID: 570694193591568219, guid: e058892a686400d40b51914c54930463, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -259364159050138977}
+    - targetCorrespondingSourceObject: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6010261646473301862}
+  m_SourcePrefab: {fileID: 100100000, guid: e058892a686400d40b51914c54930463, type: 3}
+--- !u!1 &4103867324442640456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5194097599692461605, guid: e058892a686400d40b51914c54930463, type: 3}
+  m_PrefabInstance: {fileID: 8135464284506052205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-259364159050138977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103867324442640456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d68d83f7348f74fa01bc14701fe7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Formdata: {fileID: 11400000, guid: 0cba968b08adf024a900c15d61d7b1bb, type: 2}
+  rb: {fileID: 0}
+  moveInput: {x: 0, y: 0}
+  Skill1: {fileID: 11400000, guid: 7a934e8724f66274b93e25456e876a8d, type: 2}
+  Skill2: {fileID: 11400000, guid: 83fed84421e6fd747982db3d41a0af8b, type: 2}
+  Ult: {fileID: 11400000, guid: 2a36df49803e80640b9c2153a85bd452, type: 2}
+  ControlPerdido: 0
+  RangeLeftClick: 1.3
+  RageActual: 0
+  RageMax: 100
+  RageGained: 2
+  player: {fileID: 5667771587567664332}
+  RangeAttack: 1.3
+  Ataque: {fileID: 5691628477351632451, guid: 13ee7f664d7454c45b51a0077dda7e33, type: 3}
+  controlesInvertidos: 0
+--- !u!114 &6010261646473301862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103867324442640456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2a1cc938bbe954e9ae38f6ad60073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseFormData: {fileID: 11400000, guid: 0cba968b08adf024a900c15d61d7b1bb, type: 2}
+  currentHealth: 175
+  maxHealth: 0
+  currentDamage: 0
+  currentArmor: 0
+  currentSpeedMovement: 0
+  currentSpeedAttack: 0
+  HealthPerLevel: 10
+  DamagePerLevel: 3
+  ArmorPerLevel: 0
+  SpeedMovementPerLevel: 0.25
+  SpeedAttackPerLevel: 0.2
+  buffDamage: 0
+  buffArmor: 0
+  buffSpeedMovement: 0
+  buffSpeedAttack: 0
+  inDebuff: 0
+  FormIndex: 3
+--- !u!4 &5667771587567664332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4485868435143256737, guid: e058892a686400d40b51914c54930463, type: 3}
+  m_PrefabInstance: {fileID: 8135464284506052205}
+  m_PrefabAsset: {fileID: 0}
