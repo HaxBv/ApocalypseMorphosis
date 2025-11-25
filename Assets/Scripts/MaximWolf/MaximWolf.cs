@@ -13,7 +13,9 @@ public class MaximWolf : PlayerInputs, IDamagable
     public SkillsDataSO Skill2;
     public SkillsDataSO Ult;
 
-  
+
+    public bool ControlPerdido = false;
+
     public float RangeLeftClick = 4f;
 
     private Coroutine buffCoroutine;
@@ -35,6 +37,8 @@ public class MaximWolf : PlayerInputs, IDamagable
     public float RangeAttack;
     public GameObject Ataque;
 
+    public bool controlesInvertidos = false;
+
     void Start()
     {
         CurrentSkill1Cost = Formdata.Skill1Cost;
@@ -45,14 +49,23 @@ public class MaximWolf : PlayerInputs, IDamagable
     
     void Update()
     {
-
+        
 
         MovementMechanic();
         Recharge();
         AttackCooldown();
+        OutOfControl();
 
     }
+    
+    public override void MovementMechanic()
+    {
+        Vector2 input = moveInput;
+        if (controlesInvertidos)
+            input = -input;
 
+        rb.linearVelocity = input * stats.currentSpeedMovement;
+    }
     public override void Passive()
     {
         RageActual += RageGained;
@@ -195,15 +208,34 @@ public class MaximWolf : PlayerInputs, IDamagable
 
     public override void OutOfControl()
     {
-        Debug.Log("Perdiste el control");
+        if (!ControlPerdido && GameManager.Instance.ControlActual <= 0)
+            StartCoroutine(Debuff());
     }
 
+    private IEnumerator Debuff()
+    {
+        ControlPerdido = true;
+        controlesInvertidos = true;
+        while (GameManager.Instance.ControlActual <= 0)
+        {
+            
 
+            // Aquí puedes aplicar efectos cada frame si quieres
+            // Por ejemplo, reducir velocidad, daño, etc.
 
+            yield return null; 
+        }
+
+        controlesInvertidos = false;
+        ControlPerdido = false;
+    }
     
 
 
-   public void TakeDamage(int damage)
+
+
+
+    public void TakeDamage(int damage)
     {
        /* HpActual -= damage;
 

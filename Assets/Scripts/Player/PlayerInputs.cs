@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Collections;
 public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
 {
 
@@ -18,18 +18,21 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
     protected PlayerStats stats;
 
 
+    
+
+    
+    
+
+    
 
 
 
-
-
-
-    private int ControlMax;
-    public int ControlActual;
-    private int ControlMin;
+    
 
     
     public Vector2 moveInput;
+
+
     public Action<Vector2> OnMoveChange;
 
     public Action<PlayerInputs> OnAbility1Trigger;
@@ -120,12 +123,15 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
     void Update()
     {
 
+        MovementMechanic();
 
 
     }
-    public void MovementMechanic()
+   
+
+    public virtual void MovementMechanic()
     {
-        rb.linearVelocity = moveInput * stats.currentSpeedMovement;
+       
     }
 
     /*public virtual void Pasive()

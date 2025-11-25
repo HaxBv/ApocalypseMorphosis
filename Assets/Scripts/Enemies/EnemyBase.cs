@@ -5,22 +5,13 @@ public class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField] public EnemyDataSO data;
     [SerializeField] public Rigidbody2D rb;
 
-    protected Transform player;  // Referencia al jugador
+    protected Transform player;
     protected int currentHP;
     protected float speed;
     protected int damage;
 
-    public virtual void Setup(EnemyDataSO data)
-    {
-        this.data = data;
-        this.speed = data.Speed;
-        this.damage = data.Damage;
-        currentHP = data.Health;
-
-        // Inicializar Rigidbody si no está asignado
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
-    }
+   
+    
 
     private void Awake()
     {
@@ -32,6 +23,13 @@ public class EnemyBase : MonoBehaviour, IDamagable
             if (player == null)
                 Debug.LogError("No se encontró un jugador con el Tag 'Player'");
         }
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
+
+        
+        speed = data.Speed;
+        damage = data.Damage;
+        currentHP = data.Health;
     }
 
     private void FixedUpdate()

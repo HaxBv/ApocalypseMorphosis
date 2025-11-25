@@ -22,6 +22,8 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public float buffSpeedMovement;
     [HideInInspector] public float buffSpeedAttack;
 
+    public bool inDebuff = false;
+
     public int FormIndex;
 
     private void OnEnable()

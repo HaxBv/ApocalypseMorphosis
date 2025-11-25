@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class InkMonster : EnemyBase
+public class FlyingInkMonster : EnemyBase
 {
 
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+   // {
+      //  if
+    //}
     public override void TakeDamage(int dmg)
     {
         // Aquí puedes meter partículas, animaciones, color rojo, etc

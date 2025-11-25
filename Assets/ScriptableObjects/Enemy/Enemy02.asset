@@ -19,4 +19,4 @@ MonoBehaviour:
   Damage: 40
   Speed: 3
   SpawnRate: 7
-  sprite: {fileID: 0}
+  prefab: {fileID: 3939810056422362299, guid: 58ffbae3a019c434498c6d93153057d0, type: 3}

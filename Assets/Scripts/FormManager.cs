@@ -9,6 +9,9 @@ public class FormAbilitiesUI
 public class FormManager : MonoBehaviour
 {
     public static FormManager Instance;
+    public PlayerStats CurrentStats { get; private set; }
+    
+
 
     [Header("UI de Habilidades por Forma")]
     public FormAbilitiesUI[] formsAbilitiesUI;
@@ -22,7 +25,7 @@ public class FormManager : MonoBehaviour
 
     [HideInInspector] public float currentMorphCooldown;
     [HideInInspector] public GameObject currentPlayer;
-    private int currentFormIndex = 0;
+    public int currentFormIndex { get; private set; } = 0;
 
     // Evento opcional para UI
     //public event Action<GameObject> OnPlayerChanged;
@@ -109,6 +112,8 @@ public class FormManager : MonoBehaviour
         currentPlayer = Instantiate(formPrefabs[index], pos, rot);
         currentPlayer.tag = "Player";
 
+       
+        Camera.main.GetComponent<CameraTargetFollower>().UpdatePlayerReference(currentPlayer.transform);
         NotifyEnemySpawnerAboutNewPlayer(currentPlayer);
 
         // Reset cooldown y actualizar índice
@@ -127,11 +132,14 @@ public class FormManager : MonoBehaviour
         EnemySpawner[] spawners = FindObjectsByType<EnemySpawner>(
             FindObjectsInactive.Include,
             FindObjectsSortMode.None
+
+        
         );
 
         foreach (var spawner in spawners)
         {
             spawner.UpdatePlayerReference(newPlayer.transform);
+
         }
 
         Debug.Log("EnemySpawner actualizado con el nuevo Player");

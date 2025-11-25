@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3152427945268387904}
   - component: {fileID: 4225696651426847014}
-  - component: {fileID: 7662788497771438624}
+  - component: {fileID: 4290818857317650113}
   m_Layer: 0
   m_Name: Rasgar
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7662788497771438624
+--- !u!114 &4290818857317650113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5691628477351632451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4050d648f6a844e4ba094ca08a81bc31, type: 3}
+  m_Script: {fileID: 11500000, guid: ae5a9fbd24f46dc429c3630fc2042ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0.3

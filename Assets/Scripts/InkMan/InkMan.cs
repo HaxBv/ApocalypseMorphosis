@@ -44,6 +44,13 @@ public class InkMan : PlayerInputs, IDamagable
         AttackCooldown();
         Recharge();
     }
+    public override void MovementMechanic()
+    {
+        
+        
+
+        rb.linearVelocity = moveInput * stats.currentSpeedMovement;
+    }
     public override void Passive()
     {
         GameManager.Instance.EnergiaActual += recargaEnergia * Time.deltaTime;

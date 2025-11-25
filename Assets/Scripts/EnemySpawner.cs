@@ -6,8 +6,8 @@ public class EnemySpawner : MonoBehaviour
     public Transform player;
 
     [Header("Área de spawn (rectángulo alrededor del jugador)")]
-    public float spawnWidth = 12f;     // Horizontal
-    public float spawnHeight = 10f;    // Vertical
+    public float spawnWidth = 12f;     
+    public float spawnHeight = 10f;    
 
     [Header("Lista de enemigos (SO)")]
     public EnemyDataSO[] enemyTypes;
@@ -34,9 +34,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // -----------------------------------------------------------------
-    //     SPAWN EN BORDES DEL RECTÁNGULO (fuera del área segura)
-    // -----------------------------------------------------------------
+    
     void SpawnEnemy(EnemyDataSO data)
     {
         if (data.prefab == null)
@@ -48,10 +46,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Aplicar stats al EnemyBehaviour
         EnemyBase behaviour = enemyObj.GetComponent<EnemyBase>();
-        if (behaviour != null)
-        {
-            behaviour.Setup(data);  // Puedes pasar el player si lo deseas
-        }
+        
     }
     public void UpdatePlayerReference(Transform newPlayerTransform)
     {

@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
         panelSeleccion.SetActive(false);
+
+        
     }
 
     void Start()
@@ -107,34 +109,35 @@ public class GameManager : MonoBehaviour
 
     public void ActualizarControl()
     {
-        // Buscar GameObject con tag Player
         currentPlayer = GameObject.FindGameObjectWithTag("Player");
 
         if (currentPlayer != null)
         {
-            // Ver si el script Inkman está en ese objeto
             currentInkman = currentPlayer.GetComponent<InkMan>();
 
             if (currentInkman != null)
             {
-                // Player actual = Inkman  recuperar control
+                
                 ControlActual += controlRecoveryRate * Time.deltaTime;
             }
             else
             {
-                // Player actual NO es Inkman drenar control
+                
                 ControlActual -= controlDrainRate * Time.deltaTime;
             }
         }
         else
         {
-            // No hay player  drenar también
+           
             currentInkman = null;
             ControlActual -= controlDrainRate * Time.deltaTime;
         }
 
-        // Clamp final
+        
         ControlActual = Mathf.Clamp(ControlActual, ControlMin, ControlMax);
+
+
+        
     }
 
 

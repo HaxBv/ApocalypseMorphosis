@@ -51,6 +51,10 @@ public class Shadow : PlayerInputs, IDamagable
         Recharge();
         AttackCooldown();
     }
+    public override void MovementMechanic()
+    {
+        rb.linearVelocity = moveInput * stats.currentSpeedMovement;
+    }
     public override void Passive()
     {
         throw new System.NotImplementedException();

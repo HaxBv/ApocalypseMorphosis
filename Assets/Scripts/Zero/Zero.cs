@@ -12,8 +12,10 @@ public class Zero : PlayerInputs, IDamagable
     public SkillsDataSO Ult;
 
 
-    public BalasDePlasma Plasma;
+    public SimpleDistanceAttack Plasma;
 
+
+    public bool ControlPerdido;
 
 
     public float RangeDisparo;
@@ -46,6 +48,8 @@ public class Zero : PlayerInputs, IDamagable
         MovementMechanic();
         Recharge();
         AttackCooldown();
+        OutOfControl();
+
     }
     public override void Ability1()
     {
@@ -74,7 +78,10 @@ public class Zero : PlayerInputs, IDamagable
 
 
     }
-
+    public override void MovementMechanic()
+    {
+        rb.linearVelocity = moveInput * stats.currentSpeedMovement;
+    }
     public override void Ability2()
     {
         if (Formdata.RecargaActualSkill2 >= Formdata.TiempoMaximoRecarga2)
@@ -113,6 +120,8 @@ public class Zero : PlayerInputs, IDamagable
         stats.buffSpeedMovement += skill.bonusSpeed;
         stats.buffSpeedAttack += skill.bonusAttackSpeed;
 
+        Plasma.speed *= 2f;
+
         // Reaplicar stats actuales
         stats.AplicarMejorasPorNivel();
 
@@ -125,7 +134,7 @@ public class Zero : PlayerInputs, IDamagable
         stats.buffArmor -= (int)skill.bonusArmor;
         stats.buffSpeedMovement -= skill.bonusSpeed;
         stats.buffSpeedAttack -= skill.bonusAttackSpeed;
-
+        Plasma.speed *= 0.5f;
         // Reaplicar stats actuales
         stats.AplicarMejorasPorNivel();
 
@@ -197,11 +206,12 @@ public class Zero : PlayerInputs, IDamagable
         if (attackCooldown > 0f)
             return;
         Debug.Log("¡Ataco!");
+        OnAttackPerformed?.Invoke(this);
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); mousePos.z = 0f;
         Vector2 direccion = (mousePos - transform.position).normalized;
         Vector3 origen = transform.position + (Vector3)direccion * RangeDisparo;
 
-        BalasDePlasma bala = Instantiate(Plasma, origen, Quaternion.identity);
+        SimpleDistanceAttack bala = Instantiate(Plasma, origen, Quaternion.identity);
         bala.Lanzar(direccion);
 
         attackCooldown = 1f / stats.currentSpeedAttack;
@@ -210,8 +220,34 @@ public class Zero : PlayerInputs, IDamagable
 
     public override void OutOfControl()
     {
-        throw new System.NotImplementedException();
+        if (!ControlPerdido && GameManager.Instance.ControlActual <= 0)
+            StartCoroutine(Debuff());
     }
+
+    private IEnumerator Debuff()
+    {
+        ControlPerdido = true;
+
+        // Guardar valores originales SOLO una vez
+        float originalSpeedMov = stats.currentSpeedMovement;
+        float originalSpeedAtk = stats.currentSpeedAttack;
+
+        // Aplicar debuff UNA sola vez
+        stats.currentSpeedMovement = originalSpeedMov * 0.5f;
+        stats.currentSpeedAttack = originalSpeedAtk * 0.5f;
+
+        // Mantenerlo mientras el debuff debe durar
+        while (GameManager.Instance.ControlActual <= 0)
+            yield return null;
+
+        // Restaurar valores
+        stats.currentSpeedMovement = originalSpeedMov;
+        stats.currentSpeedAttack = originalSpeedAtk;
+
+        ControlPerdido = false;
+    }
+
+
 
     public override void Passive()
     {

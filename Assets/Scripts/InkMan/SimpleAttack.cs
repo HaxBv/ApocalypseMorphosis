@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class InkManAttack : MonoBehaviour
+public class SimpleAttack : MonoBehaviour
 {
-    public float lifetime;
+    private float lifetime = 0.3f;
     void Start()
     {
         Destroy(gameObject, lifetime);
     }
 
-    
+
     void Update()
     {
-        
+
     }
 }

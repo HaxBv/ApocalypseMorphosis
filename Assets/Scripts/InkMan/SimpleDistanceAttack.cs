@@ -1,9 +1,7 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class BalasDePlasma : MonoBehaviour
+public class SimpleDistanceAttack : MonoBehaviour
 {
-
     public float speed;
     public float lifetime;
 
