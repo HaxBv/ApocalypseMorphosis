@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 798220881215819579}
   - component: {fileID: 2844914591285120673}
   - component: {fileID: 3130252342284860055}
+  - component: {fileID: 1796996852559115932}
+  - component: {fileID: 6333126348329604794}
+  - component: {fileID: 8058700770612779733}
   m_Layer: 0
   m_Name: MaximWolf
   m_TagString: Player
@@ -31,8 +34,8 @@ Transform:
   m_GameObject: {fileID: 1714525334350936676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.3865, y: -19.4701, z: 0}
-  m_LocalScale: {x: 0.05311689, y: 0.05311689, z: 0.05311689}
+  m_LocalPosition: {x: -19.4707, y: -19.5543, z: 0}
+  m_LocalScale: {x: 0.16171442, y: 0.16171442, z: 0.16171442}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +105,7 @@ Animator:
   m_GameObject: {fileID: 1714525334350936676}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3a783f9bfe46f04b9a2106e1ffd93e6, type: 2}
+  m_Controller: {fileID: 9100000, guid: c73aeff8f7f52694595a7fee2692f6e8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -240,5 +243,49 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 23.27, y: 19.977001}
+  m_Size: {x: 8.762225, y: 7.608835}
   m_EdgeRadius: 0
+--- !u!114 &1796996852559115932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714525334350936676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5976f8adc917914c8666a69b69a138b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputManager: {fileID: 0}
+--- !u!114 &6333126348329604794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714525334350936676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7987fba1a96c791468b4051b29991541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Formdata: {fileID: 0}
+  rb: {fileID: 0}
+  ControlActual: 0
+  moveInput: {x: 0, y: 0}
+--- !u!114 &8058700770612779733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714525334350936676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391136fbe82b35d468087eb783201c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  sprite: {fileID: 0}
+  IsMoving: 0

@@ -32,7 +32,7 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
     public Vector2 moveInput;
 
 
-    public Action<PlayerInputs> OnAbility1Trigger;
+    public Action OnAbility1Trigger;
     public Action<PlayerInputs> OnAbility2Trigger;
     public Action<PlayerInputs> OnDefinitivaTrigger;
 
@@ -73,6 +73,7 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
     {
         if (GameManager.Instance.IsSelectingForm) return;
         Ability1();
+        
 
     }
     private void OnSkill2(InputAction.CallbackContext context)
@@ -144,17 +145,17 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
 
     public virtual void Ability1()
     {
-        OnAbility1Trigger?.Invoke(this);
+        
     }
 
     public virtual void Ability2()
     {
-        OnAbility2Trigger?.Invoke(this);
+        
     }
 
     public virtual void Definitiva()
     {
-        OnDefinitivaTrigger?.Invoke(this);
+        
     }
 
     public virtual void OutOfControl()

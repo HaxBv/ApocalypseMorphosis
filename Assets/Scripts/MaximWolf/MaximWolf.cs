@@ -58,7 +58,7 @@ public class MaximWolf : PlayerInputs, IDamagable
     }
     public override void Ability1()
     {
-
+        
         if (Formdata.RecargaActualSkill1 >= Formdata.TiempoMaximoRecarga1)
         {
 
@@ -66,6 +66,7 @@ public class MaximWolf : PlayerInputs, IDamagable
             {
                 Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
+                OnAbility1Trigger?.Invoke();
                 float direccion = Mathf.Sign(transform.localScale.x);
                 Vector3 posicionFrente = transform.position + new Vector3(RangeLeftClick * direccion, 0, 0);
 
@@ -91,7 +92,7 @@ public class MaximWolf : PlayerInputs, IDamagable
                 {
                     Formdata.RecargaActualSkill2 = 0;
                     GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
-                    
+                    OnAbility2Trigger?.Invoke(this);
                     Instantiate(Skill2.prefab, player.position, Quaternion.identity);
                     Debug.Log("Aullido Aterrador");
                 }
@@ -122,7 +123,7 @@ public class MaximWolf : PlayerInputs, IDamagable
                 Formdata.RecargaActualDefinitiva = 0;
                 GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
                 StartCoroutine(AplicarBuff(Ult));
-
+                OnDefinitivaTrigger?.Invoke(this);
             }
             else Debug.Log("Energia Insuficiente");
         }
