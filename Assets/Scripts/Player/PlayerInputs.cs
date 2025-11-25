@@ -30,9 +30,9 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
 
     
     public Vector2 moveInput;
+    public Action<Vector2> OnMoveChange;
 
-
-    public Action OnAbility1Trigger;
+    public Action<PlayerInputs> OnAbility1Trigger;
     public Action<PlayerInputs> OnAbility2Trigger;
     public Action<PlayerInputs> OnDefinitivaTrigger;
 
@@ -109,6 +109,7 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
     private void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        OnMoveChange?.Invoke(moveInput);
     }
     void Start()
     {
@@ -170,7 +171,7 @@ public class PlayerInputs : MonoBehaviour, IAbilities, IRechargeAbility, IAtacar
 
     public virtual void Atacar()
     {
-        OnAttackPerformed?.Invoke(this);
+        
     }
 
     public virtual void AttackCooldown()

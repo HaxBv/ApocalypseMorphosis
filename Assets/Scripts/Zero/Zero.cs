@@ -55,6 +55,7 @@ public class Zero : PlayerInputs, IDamagable
             {
                 Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
+                OnAbility1Trigger?.Invoke(this);
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePos.z = 0;
 
@@ -82,6 +83,8 @@ public class Zero : PlayerInputs, IDamagable
             {
                 Formdata.RecargaActualSkill2 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
+                OnAbility2Trigger?.Invoke(this);
+
                 StartCoroutine(AplicarBuff(Skill2));
                
             }
@@ -145,6 +148,7 @@ public class Zero : PlayerInputs, IDamagable
                 {
                     Formdata.RecargaActualDefinitiva = 0;
                     GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
+                    OnDefinitivaTrigger?.Invoke(this);
                     // Obtener la posición del mouse en coordenadas del mundo
                     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     mousePos.z = 0f;

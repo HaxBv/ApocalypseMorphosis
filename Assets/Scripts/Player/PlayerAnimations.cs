@@ -18,10 +18,18 @@ public class PlayerAnimations : MonoBehaviour
 
     void Start()
     {
+
+        PlayerController.Instance.
+            InputManager.OnMoveChange
+            += SetMoveAnimation;
+
         /*PlayerController.Instance.
             InputManager.OnAttackPerformed
             += SetAttackAnimation;
          */
+        PlayerController.Instance.
+            InputManager.OnAbility1Trigger
+            += SetSkill1Animation;
         PlayerController.Instance.
             InputManager.OnAbility1Trigger
             += SetSkill1Animation;
@@ -36,12 +44,24 @@ public class PlayerAnimations : MonoBehaviour
          */
     }
 
+    private void SetMoveAnimation(Vector2 vector)
+    {
+        if( vector.x < 0)
+        
+             sprite.flipX = true;
+
+        if (vector.x > 0)
+
+            sprite.flipX = false;
+
+    }
+
     /*private void SetAttackAnimation(PlayerInputs inputs)
     {
         throw new NotImplementedException();
     }
     */
-    private void SetSkill1Animation()
+    private void SetSkill1Animation(PlayerInputs player)
     {
         controller.SetTrigger("OnSkill1");
         print("Skill1");

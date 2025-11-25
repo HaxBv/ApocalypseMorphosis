@@ -65,6 +65,8 @@ public class Shadow : PlayerInputs, IDamagable
             {
                 Formdata.RecargaActualSkill1 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill1Cost);
+                OnAbility1Trigger?.Invoke(this);
+
                 print("Energia Actual: " + GameManager.Instance.EnergiaActual);
                 // Posición del mouse en mundo
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -135,6 +137,8 @@ public class Shadow : PlayerInputs, IDamagable
             {
                 Formdata.RecargaActualSkill2 = 0;
                 GameManager.Instance.UsarEnergia(CurrentSkill2Cost);
+                OnAbility2Trigger?.Invoke(this);
+
                 print("Energia Actual: " + GameManager.Instance.EnergiaActual);
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePos.z = 0;
@@ -174,7 +178,7 @@ public class Shadow : PlayerInputs, IDamagable
                     GameManager.Instance.UsarEnergia(CurrentDefinitivaCost);
                     print("Energia Actual: " + GameManager.Instance.EnergiaActual);
                     Debug.Log("1000 Sombras");
-
+                    OnDefinitivaTrigger?.Invoke(this);
                     StartCoroutine(SpawnRafaga());
                 }
 
