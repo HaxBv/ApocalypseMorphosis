@@ -8,6 +8,7 @@ public class Chomp : MonoBehaviour
     void Start()
     {
         Destroy(gameObject,LifeTime);
+        SoundManager.Instance.Play("InkManFragment");
     }
 
     void Update()

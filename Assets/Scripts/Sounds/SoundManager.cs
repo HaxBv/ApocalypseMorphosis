@@ -4,125 +4,49 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    public AudioClip JumpClip;
-    public AudioClip AttackClip;
 
-    private GameObject AudioReproducer;
+    [System.Serializable]
+    public class SoundItem
+    {
+        public string Name_Sound;           // nombre para el diccionario
+        public AudioClip clip;       // sonido
+        public float volume = 1f;    // volumen individual
+    }
 
+    public List<SoundItem> sounds = new List<SoundItem>();
+    private Dictionary<string, SoundItem> soundDictionary;
 
-    public Dictionary <string, AudioClip> musicData = new();
-
-
-    public GameObject AudioReproducerPrefab;
-
-    public int PoolSize = 10;
-
-
-    public List<GameObject> AudioPool = new();
-
+    private AudioSource audioSource;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+
+        soundDictionary = new Dictionary<string, SoundItem>();
+
+        foreach (var s in sounds)
         {
-            Instance = this;
+            if (!soundDictionary.ContainsKey(s.Name_Sound))
+                soundDictionary.Add(s.Name_Sound, s);
         }
-
-        
-
-        for (int i = 0; i < PoolSize; i++)
-        {
-
-
-            GameObject obj = Instantiate(AudioReproducerPrefab);
-
-
-            AudioPool.Add(obj);
-
-
-
-
-        }
-
-
-
-
-
     }
-    void Start()
+
+    // Reproduce un sonido por nombre
+    public void Play(string key)
     {
-        musicData.Add("JumpSFX", JumpClip);
-        musicData.Add("AttackSFX", JumpClip);
-
-
-
-        //PlaySound("JumpSFX", 10);
-        //PlaySound("AttackSFX", 10);
-        /*if(musicData.TryGetValue("JumpSFX", out AudioClip clip))
+        if (soundDictionary.ContainsKey(key))
         {
-            print(clip.name);
+            SoundItem sound = soundDictionary[key];
+            audioSource.PlayOneShot(sound.clip, sound.volume);
         }
         else
         {
-            print("no existe");
+            Debug.LogWarning("El sonido '" + key + "' no existe en el diccionario.");
         }
-
-            print(musicData["JumpSFX"].name);*/
     }
-
-    public void PlaySound(string musicName, float volume)
-    {
-
-        
-        if (musicData.TryGetValue(musicName, out AudioClip clip))
-        {
-            
-            print(clip.name);
-
-
-
-            AudioSource audioSource = GetAvaliableSoundReproducer().GetComponent<AudioSource>();
-
-
-            audioSource.clip = clip;
-            audioSource.volume = volume;
-
-            
-            
-            audioSource.gameObject.SetActive(true);
-
-
-            
-            audioSource.GetComponent<AudioReproducer>().SetAudio();
-
-
-
-           
-
-           
-
-
-        }
-        else
-        {
-            print("no existe");
-        }
-
-        print(musicData[musicName].name);
-    }
-
-
-    public GameObject GetAvaliableSoundReproducer()
-    {
-        foreach(var item in AudioPool)
-        {
-            if (item.activeSelf == false)
-            {
-                return item;
-            }
-            
-        }
-        return null;
-    }
-
 }

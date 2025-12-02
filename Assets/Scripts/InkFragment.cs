@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class InkFragment : MonoBehaviour
 {
     public float xp;
-    
     void Start()
     {
         
@@ -24,6 +24,7 @@ public class InkFragment : MonoBehaviour
             PlayerLevelSystem.Instance.GanarXP(xp);
             Destroy(gameObject);
             Debug.Log("Ganaste " + xp + " de XP");
+            SoundManager.Instance.Play("InkManFragment");
         }
     }
 }
